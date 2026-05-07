@@ -1,0 +1,53 @@
+.product-heading {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: vw(20px) 0;
+    @include gap(20px);
+
+    @include HD {
+        padding: vwh(20px) 0 vwh(12px);
+    }
+    @include Tablet {
+        display: none;
+    }
+
+    &__title {
+        color: var(--gray-black);
+        @include h3;
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        flex-shrink: 0;
+        @include gap(8px);
+    }
+
+    &__button {
+
+        &-compare {
+            color: var(--gray-darker);
+
+            .compare-button__text {
+                @include t3-b;
+
+                @include Tablet {
+                    @include t3-b;
+                }
+            }
+        }
+
+        &-download {
+
+        }
+
+        &-print {
+
+        }
+
+        &-share {
+
+        }
+    }
+}

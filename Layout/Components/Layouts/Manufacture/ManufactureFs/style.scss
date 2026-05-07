@@ -1,0 +1,114 @@
+.manufacture-fs {
+    @include mq(padding-block-start, 20px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid var(--gray-lighter);
+        @include mq(padding-block-end, 60px, 42px, 32px, 32px);
+        @include mq(gap, 40px, 40px, 32px, 32px);
+        @include border-r(2px);
+    }
+
+    &__top {
+        display: flex;
+        flex-direction: row;
+        @include mq(gap, 80px, 80px, 20px, 20px);
+
+        @include Tablet {
+            flex-direction: column;
+        }
+    }
+
+    &__title {
+        color: var(--gray-black);
+        @include h1;
+
+        span {
+            color: var(--color1-main);
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        @include gap(12px);
+        @include mq(max-width, 460px, 460px, 524px, 524px);
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        @include t2;
+    }
+
+    &__image-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        background: var(--gray-lighter);
+        @include border-r(28px, 28px, 12px, 12px);
+        @include mq(height, 460px, 412px, 260px, 220px);
+    }
+
+    &__image {
+        height: 100%;
+        width: 100%;
+    }
+
+    &__info-link {
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: vw(64px);
+        color: var(--color1-dark);
+        background: var(--gray-lighter);
+        z-index: 2;
+        @include gap(8px);
+        @include transition((background, color));
+        @include border-r(8px);
+        @include mq(right, 20px, 20px, 8px, 8px);
+        @include mq(bottom, 20px, 20px, 8px, 8px);
+        @include mq(padding-inline-start, 16px, 16px, 12px, 12px);
+        @include mq(padding-inline-end, 20px, 20px, 16px, 16px);
+
+        @include HD {
+            height: vwh(64px);
+        }
+        @include Tablet {
+            height: vwt(40px);
+        }
+        @include Mobile {
+            height: vwm(40px);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background: var(--gray-light);
+            }
+        }
+
+        &:active {
+            color: var(--color1-darker);
+            background: var(--color1-lighter);
+        }
+
+
+        svg {
+            flex-shrink: 0;
+            @include icon(40px);
+
+            @include Tablet {
+                @include icon(24px);
+            }
+        }
+
+        span {
+            @include t2-b;
+
+            @include Tablet {
+                @include t3-b;
+            }
+        }
+    }
+}

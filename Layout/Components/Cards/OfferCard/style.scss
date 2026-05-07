@@ -1,0 +1,75 @@
+.offer-card {
+    display: flex;
+    flex-direction: column;
+    height: vw(260px);
+    width: 100%;
+    overflow: hidden;
+    @include border-r(12px);
+
+    @include HD {
+        height: vwh(232px);
+    }
+    @include Tablet {
+        height: vwt(192px);
+    }
+    @include Mobile {
+        height: vwm(192px);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .offer-card__image {
+                transform: scale(1.1);
+            }
+
+            .offer-card__text {
+                color: var(--color1-darker);
+            }
+        }
+    }
+
+    &:active {
+        .offer-card__image {
+            transform: scale(1);
+            filter: brightness(70%);
+        }
+
+        .offer-card__text {
+            color: var(--gray-darker);
+        }
+    }
+
+    &__image {
+        height: 100%;
+        width: 100%;
+        user-select: none;
+        @include transition((transform, filter));
+    }
+
+    &__text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0 vw(20px) vw(20px);
+        color: var(--gray-darker);
+        @include t1-b;
+        @include truncate(3);
+        @include transition((color));
+
+        @include HD {
+            padding: 0 vwh(12px) vwh(12px);
+        }
+        @include Tablet {
+            padding: 0 vwt(12px) vwt(12px);
+            @include t2-b;
+        }
+        @include Mobile {
+            padding: 0 vwm(12px) vwm(12px);
+        }
+
+        &--white {
+            color: var(--gray-white);
+        }
+    }
+}

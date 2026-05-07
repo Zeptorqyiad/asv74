@@ -1,0 +1,80 @@
+.dual-range {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: vw(8px);
+
+    @include HD {
+        gap: vwh(8px);
+    }
+    @include Tablet {
+        gap: vwt(8px);
+    }
+    @include Mobile {
+        gap: vwm(8px);
+    }
+
+    &__input-group {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: vw(8px);
+
+        @include HD {
+            gap: vwh(8px);
+        }
+        @include Tablet {
+            gap: vwt(8px);
+        }
+        @include Mobile {
+            gap: vwm(8px);
+        }
+    }
+
+    &__input-wrapper {
+        flex: 1;
+    }
+
+    &__range-slider {
+        position: relative;
+        width: 94%;
+        height: vw(5px);
+        background: var(--gray-lighter);
+        border-radius: 5px;
+        margin: vw(8px) 0;
+
+        @include HD {
+            height: vwh(5px);
+            margin: vwh(8px) 0;
+        }
+        @include Tablet {
+            width: 96%;
+            height: vwt(5px);
+            margin: vwt(8px) 0;
+        }
+        @include Mobile {
+            width: 94%;
+            height: vwm(5px);
+            margin: vwm(8px) 0;
+        }
+    }
+
+    &__slider-track {
+        height: 100%;
+        position: absolute;
+        background: var(--color1-main);
+        @include border-r(2px);
+    }
+
+    &__slider-handle {
+        @include icon(20px);
+        background: var(--color1-main);
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: box-shadow 0.2s;
+        z-index: 1;
+    }
+}

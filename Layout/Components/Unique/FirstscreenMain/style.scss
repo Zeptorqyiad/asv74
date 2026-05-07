@@ -1,0 +1,127 @@
+.fs-main {
+    display: flex;
+    flex-direction: column;
+    padding: vw(28px) 0 vw(40px);
+    gap: vw(28px);
+
+    @include HD {
+        padding: vwh(28px) 0 vwh(40px);
+        gap: vwh(28px);
+    }
+    @include Tablet {
+        padding: vwt(20px) 0;
+        gap: vwt(28px);
+    }
+    @include Mobile {
+        padding: vwm(20px) 0;
+        gap: vwm(24px);
+    }
+
+    &__top {
+        display: grid;
+        grid-template-columns: auto vw(440px);
+        gap: vw(60px);
+
+        @include HD {
+            grid-template-columns: auto vwh(436px);
+            gap: vwh(40px);
+        }
+        @include Tablet {
+            grid-template-columns: auto;
+            grid-auto-rows: auto auto;
+            gap: vwt(12px);
+        }
+        @include Mobile {
+            gap: vwm(12px);
+        }
+    }
+
+    &__title {
+        color: var(--gray-black);
+        @include h1;
+
+        span {
+            color: var(--color1-dark);
+        }
+    }
+
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        margin-top: vw(8px);
+        gap: vw(20px);
+
+        @include HD {
+            margin-top: vwh(8px);
+            gap: vwh(20px);
+        }
+        @include Tablet {
+            margin-top: 0;
+            gap: vwt(20px);
+        }
+        @include Mobile {
+            gap: vwm(20px);
+        }
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        grid-area: desc;
+        @include t2;
+
+        @include Tablet {
+            max-width: 32ch;
+        }
+        @include Mobile {
+            max-width: unset;
+        }
+    }
+
+    &__buttons {
+        display: inline-flex;
+        gap: vw(12px);
+
+        @include HD {
+            gap: vwh(12px);
+        }
+        @include Tablet {
+            gap: vwt(8px);
+        }
+        @include Mobile {
+            gap: vwm(8px);
+        }
+    }
+
+    &__button-catalog {
+        grid-area: catalog;
+        white-space: nowrap;
+
+        @include Mobile {
+            width: 100%;
+        }
+    }
+
+    &__button-callback {
+        grid-area: callback;
+        white-space: nowrap;
+
+        @include Mobile {
+            width: 100%;
+        }
+    }
+
+    &__carousel {
+        margin-inline: vw(20px);
+        overflow: hidden;
+
+        @include HD {
+            margin-inline: vwh(45px);
+        }
+        @include Tablet {
+            margin-inline: vwt(12px);
+        }
+        @include Mobile {
+            margin-inline: vwm(12px);
+        }
+    }
+}

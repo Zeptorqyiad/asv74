@@ -1,0 +1,112 @@
+.about-factory {
+    display: flex;
+    flex-direction: column;
+    @include mq(padding-block, 80px, 80px, 40px, 40px);
+    @include mq(gap, 60px, 60px, 32px, 32px);
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        @include gap(12px);
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__body {
+        background: var(--gray-lighter);
+        @include mq(padding-block, 60px, 60px, 40px, 40px);
+    }
+
+    &__body-wrap {
+        display: flex;
+        flex-direction: row;
+        @include mq(padding-left, 250px, 45px, 12px, 12px);
+        @include mq(gap, 20px, 20px, 16px, 20px);
+
+        @include Mobile {
+            flex-direction: column;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        border-right: solid var(--gray-light);
+        flex-shrink: 0;
+        @include border-w(2px);
+        @include mq(padding-top, 20px, 20px, 20px, 0);
+        @include mq(padding-right, 20px, 20px, 12px, 0);
+        @include mq(width, 340px, 304px, 304px, 0);
+        @include mq(gap, 28px, 28px, 16px, 16px);
+
+        @include Tablet {
+            justify-content: center;
+        }
+
+        @include Mobile {
+            width: 100%;
+            border-right: none;
+        }
+
+        &-desc {
+            color: var(--gray-dark);
+            @include t2;
+        }
+    }
+
+    &__slider {
+        overflow: hidden;
+        width: 100%;
+        height: fit-content;
+        @include mq(border-top-left-radius, 20px);
+        @include mq(border-bottom-left-radius, 20px);
+        @include mq(margin-block, 20px, 20px, 16px, 0)
+    }
+
+    &__card {
+        overflow: hidden;
+        background: var(--color1-lighter);
+        @include border-r(20px);
+        @include mq(height, 280px, 250px, 250px, 250px);
+
+        &-image {
+            height: 100%;
+            width: 100%;
+            user-select: none;
+            scale: 1.1;
+        }
+
+        &-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            @include mq(padding, 20px);
+            @include gap(12px);
+        }
+
+        &-count {
+            text-align: center;
+            color: var(--gray-dark);
+            @include t2-b;
+            @include truncate(1);
+        }
+
+        &-desc {
+            text-align: center;
+            color: var(--gray-dark);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            @include t2;
+        }
+    }
+}

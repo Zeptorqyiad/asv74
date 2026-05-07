@@ -1,0 +1,180 @@
+.pagination {
+    padding: vw(40px) 0 vw(80px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: vw(20px);
+
+    @include HD {
+        padding: vwh(40px) 0 vwh(80px);
+        gap: vwh(20px);
+    }
+    @include Tablet {
+        padding: vwt(12px) 0;
+        gap: vwt(20px);
+    }
+    @include Mobile {
+        padding: vwm(17px) 0 vwm(32px);
+        gap: vwm(20px);
+    }
+
+    &--desktop {
+        display: flex;
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &--mobile {
+        display: none;
+
+        @include Tablet {
+            display: flex;
+        }
+    }
+
+    &__container {
+        display: flex;
+        gap: vw(8px);
+
+        @include HD {
+            gap: vwh(8px);
+        }
+        @include Tablet {
+            gap: vwt(8px);
+        }
+        @include Mobile {
+            gap: vwm(8px);
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: vw(31px);
+        height: vw(40px);
+        background: transparent;
+        color: var(--gray-darker);
+        touch-action: manipulation;
+        @include border-r(8px);
+
+        @include HD {
+            width: vwh(31px);
+            height: vwh(40px);
+        }
+        @include Tablet {
+            width: vwt(31px);
+            height: vwt(40px);
+        }
+        @include Mobile {
+            width: vwm(31px);
+            height: vwm(40px);
+        }
+
+        @include transition((color, background));
+        @include t3;
+        font-family: var(--font-family-body);
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background: var(--gray-lighter);
+                color: var(--color1-main);
+            }
+        }
+
+        &:active {
+            background: var(--color1-lighter);
+            color: var(--color1-dark);
+        }
+
+        &.active {
+            cursor: default;
+            pointer-events: none;
+            background: var(--gray-lighter);
+            color: var(--gray-darker);
+            font-weight: 700;
+        }
+
+        svg {
+            flex-shrink: 0;
+            width: vw(24px);
+            height: vw(24px);
+
+            path {
+                stroke: currentColor;
+            }
+
+            @include HD {
+                width: vwh(24px);
+                height: vwh(24px);
+            }
+            @include Tablet {
+                width: vwt(24px);
+                height: vwt(24px);
+            }
+            @include Mobile {
+                width: vwm(24px);
+                height: vwm(24px);
+            }
+        }
+
+        &--disabled {
+            color: var(--gray-medium);
+            user-select: none;
+            pointer-events: none;
+        }
+
+        &--prev,
+        &--next {
+            width: vw(40px);
+            height: vw(40px);
+
+            @include HD {
+                width: vwh(40px);
+                height: vwh(40px);
+            }
+            @include Tablet {
+                width: vwt(40px);
+                height: vwt(40px);
+            }
+            @include Mobile {
+                width: vwm(40px);
+                height: vwm(40px);
+            }
+        }
+    }
+
+    &__button-more {
+        padding: vw(10px) vw(16px);
+        background: var(--gray-black);
+        color: var(--gray-white);
+        @include t3;
+        @include transition((color, background));
+
+        @include HD {
+            padding: vwh(10px) vwh(16px);
+        }
+        @include Tablet {
+            padding: vwt(10px) vwt(16px);
+        }
+        @include Mobile {
+            display: none;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background: var(--gray-dark);
+            }
+        }
+
+        &:active {
+            background: var(--gray-darker);
+        }
+
+        &--disabled {
+            display: none;
+        }
+    }
+}

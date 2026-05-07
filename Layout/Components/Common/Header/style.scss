@@ -1,0 +1,211 @@
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: z('header');
+    transform: translateY(0) translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    @include transition((transform));
+
+    &.collapsed {
+        transform: translateY(vw(-50px)) translateZ(0);
+
+        @include HD {
+            transform: translateY(vwh(-50px)) translateZ(0);
+        }
+        @include Tablet {
+            transform: translateY(0) translateZ(0);
+        }
+
+        .header__top {
+            overflow: hidden;
+            user-select: none;
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: var(--gray-white);
+    }
+
+    &__top {
+        height: fit-content;
+        z-index: 2;
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__bottom {
+        position: relative;
+        display: flex;
+
+        &-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            height: vw(72px);
+            width: 100%;
+            border-bottom: solid var(--gray-lighter);
+            z-index: 1;
+            @include border-w(2px);
+            @include gap(12px);
+
+            @include HD {
+                height: vwh(64px);
+            }
+            @include Tablet {
+                grid-template-columns: auto auto;
+                height: vwt(64px);
+            }
+            @include Mobile {
+                height: vwm(64px);
+            }
+        }
+
+        &-wrap {
+            height: 100%;
+            display: inline-flex;
+            align-items: center;
+            @include gap(12px);
+
+            &--left {
+                flex-shrink: 0;
+            }
+
+            &--center {
+                width: 100%;
+
+                @include Tablet {
+                    display: none;
+                }
+            }
+
+            &--right {
+                flex-shrink: 0;
+
+                @include Tablet {
+                    gap: vwt(8px);
+                }
+                @include Mobile {
+                    gap: vwm(8px);
+                }
+            }
+
+            &.with-title {
+
+                @include Tablet {
+                    .header__logo {
+                        display: none;
+                    }
+
+                    .header__page-title-wrap {
+                        display: flex;
+                    }
+
+                    .header__separator {
+                        display: none;
+                    }
+
+                    .header__subtitle {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    &__logo {
+
+    }
+
+    &__page-title-wrap {
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        @include gap(8px);
+    }
+
+    &__button-back {
+
+    }
+
+    &__page-title {
+        color: var(--gray-darker);
+        @include t2-b;
+        @include truncate(1);
+
+        @include Tablet {
+            max-width: 50ch;
+        }
+        @include Mobile {
+            max-width: 14ch;
+        }
+    }
+
+    &__separator {
+        height: vw(24px) !important;
+
+        @include HD {
+            height: vwh(24px) !important;
+        }
+        @include Tablet {
+            display: none !important;
+        }
+    }
+
+    &__subtitle {
+        max-width: 19ch;
+        color: var(--gray-dark);
+        @include t4-lh;
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__button-catalog {
+        flex-shrink: 0;
+    }
+
+    &__search-container {
+
+    }
+
+    &__button-compare {
+        flex-shrink: 0;
+
+        @include Tablet {
+            display: none !important;
+        }
+    }
+
+    &__button-callback {
+        flex-shrink: 0;
+
+        @include Tablet {
+            display: none !important;
+        }
+    }
+
+    &__button-search {
+        display: none !important;
+
+        @include Tablet {
+            display: inline-flex !important;
+        }
+    }
+
+    &__button-menu {
+        display: none !important;
+
+        @include Tablet {
+            display: inline-flex !important;
+        }
+    }
+}

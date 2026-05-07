@@ -1,0 +1,149 @@
+.service-fs {
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        gap: vw(24px) vw(40px);
+        @include mq(padding-block, 40px, 40px, 24px, 24px);
+        @include border-w(2px);
+
+        @include HD {
+            gap: vwh(24px) vwh(40px);
+        }
+        @include Tablet {
+            gap: vwt(20px) vwt(28px);
+            border-bottom: solid var(--gray-lighter);
+        }
+        @include Mobile {
+            gap: vwm(20px);
+            flex-direction: column;
+        }
+    }
+
+    &__ls {
+        display: flex;
+        flex-direction: column;
+        @include spacing(width, 820px, 736px, 364px);
+        flex-shrink: 0;
+        @include spacing(gap, 20px);
+
+        @include Mobile {
+            width: 100%;
+        }
+    }
+
+    &__image {
+        overflow: hidden;
+        @include mq(height, 460px, 430px, 210px, 204px);
+        @include border-r(20px, 20px, 12px, 12px);
+
+        img {
+            user-select: none;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        @include gap(24px);
+        @include spacing(padding-left, 20px, 0, 0, 0);
+        @include spacing(padding-top, 12px, 12px, 0, 0);
+    }
+
+    &__desc {
+        color: var(--gray-darker);
+        @include t2;
+    }
+
+    &__badges {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        @include gap(8px);
+    }
+
+    &__badge {
+        background: var(--gray-light) !important;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        @include mq(gap, 12px);
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        border-top: solid var(--gray-lighter);
+        @include mq(gap, 12px);
+        @include mq(padding-top, 12px);
+        @include border-w(2px);
+
+        &-icon {
+            color: var(--color1-main);
+            flex-shrink: 0;
+            @include icon(20px);
+        }
+
+        &-text {
+            color: var(--gray-darker);
+            @include t3;
+        }
+    }
+
+    &__controls {
+        border-top: solid var(--gray-lighter);
+        @include mq(padding-top, 24px, 24px, 0, 20px);
+        @include border-w(2px);
+
+        &-wrap {
+            display: flex;
+            flex-direction: column;
+            @include spacing(gap, 12px, 12px, 8px, 8px);
+
+            &--top {
+                display: flex;
+                flex-direction: row;
+                @include spacing(gap, 12px);
+            }
+            &--bottom {
+                display: flex;
+                flex-direction: row;
+                @include spacing(gap, 12px);
+            }
+
+            & .btn {
+                width: 100%;
+            }
+        }
+
+        &--mob {
+            display: none;
+
+            @include Tablet {
+                display: block !important;
+            }
+        }
+
+        @include Tablet {
+            border-top: none;
+            display: none;
+            padding-top: 0;
+        }
+    }
+
+    &__button-callback {
+
+        & .btn__text {
+            white-space: nowrap;
+        }
+
+        @include Mobile {
+            width: 100% !important;
+        }
+    }
+}

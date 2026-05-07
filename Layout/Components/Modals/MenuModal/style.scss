@@ -1,0 +1,195 @@
+.menu-modal {
+    width: 100%;
+    max-width: vw(560px);
+    padding: vw(32px);
+    height: auto;
+    max-height: 100dvh;
+    @include border-r(28px, 28px, 0, 0);
+    @include hide-scrollbar;
+
+    @include HD {
+        max-width: vwh(500px);
+        padding: vwh(32px);
+    }
+    @include Tablet {
+        max-width: 100%;
+        height: 100%;
+        padding: vwt(8px) vwt(12px) vwt(12px);
+        transform: translate(100%, 0) translateZ(0) !important;
+    }
+    @include Mobile {
+        height: 100%;
+        padding: vwm(8px) vwm(12px) vwm(12px);
+    }
+
+    &.active {
+        @include Tablet {
+            transform: translate(0) translateZ(0) !important;
+        }
+    }
+
+    &__container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        @include gap(20px);
+
+        @include Tablet {
+            gap: 0;
+        }
+
+    }
+
+    &__button-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &__top {
+        display: flex;
+        flex-direction: column;
+        max-width: vw(438px);
+        @include gap(12px);
+
+        @include HD {
+            max-width: vwh(436px);
+        }
+        @include Tablet {
+            max-width: unset;
+            margin-top: vwt(4px);
+
+        }
+        @include Mobile {
+            margin-top: vwm(4px);
+        }
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h4;
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        @include t2;
+    }
+
+    &__body {
+        display: flex;
+        overflow: hidden auto;
+        flex: 1 1 auto;
+        max-height: 50dvh;
+        @include border-r(4px);
+
+        @include Tablet {
+            margin-top: vwt(12px);
+            padding-top: vwt(8px);
+            padding-bottom: vwt(64px);
+            border-top: solid var(--gray-lighter);
+            max-height: unset;
+            @include border-w(2px);
+        }
+        @include Mobile {
+            margin-top: vwm(12px);
+            padding-top: vwm(8px);
+            padding-bottom: vwm(64px);
+        }
+    }
+
+    &__body-wrap {
+        display: flex;
+        flex-direction: column;
+        @include gap(8px);
+    }
+
+    &__button {
+        justify-content: flex-start !important;
+        width: 100% !important;
+
+        &-geo {
+
+        }
+
+        &-catalog {
+            grid-area: catalog;
+            width: 100% !important;
+        }
+
+        &-compare {
+            grid-area: compare;
+        }
+
+        &-callback {
+            grid-area: callback;
+            width: 100% !important;
+        }
+    }
+
+    &__separator {
+        grid-area: separator;
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+
+        &-buttons {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-areas:
+                'catalog compare'
+                'separator separator'
+                'callback callback';
+            gap: vw(12px) vw(8px);
+
+            @include HD {
+                gap: vwh(12px) vwh(8px);
+            }
+            @include Tablet {
+                gap: vwt(12px) vwt(8px);
+            }
+            @include Mobile {
+                gap: vwm(12px) vwm(8px);
+            }
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: vw(20px);
+        @include gap(12px);
+
+        @include HD {
+            margin-top: vwh(20px);
+        }
+        @include Tablet {
+            margin-top: vwt(20px);
+        }
+        @include Mobile {
+            margin-top: vwm(20px);
+        }
+
+        &-button {
+
+        }
+    }
+
+    &__socials {
+        justify-content: center;
+        margin-top: vw(8px);
+
+        @include HD {
+            margin-top: vwh(8px);
+        }
+        @include Tablet {
+            margin-top: vwt(8px);
+        }
+        @include Mobile {
+            margin-top: vwm(8px);
+        }
+    }
+}

@@ -1,0 +1,43 @@
+.privacy-section {
+    display: flex;
+    justify-content: center;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        color: var(--gray-black);
+        @include h3;
+        @include mq(padding-block-start, 20px, 20px, 20px, 20px);
+        @include mq(padding-block-end, 12px, 12px, 8px, 8px);
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        @include gap(12px);
+        @include mq(padding-block-start, 40px, 40px, 20px, 20px);
+        @include mq(padding-block-end, 80px, 80px, 40px, 40px);
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid var(--gray-lighter);
+        @include mq(padding-block-end, 20px, 20px, 12px, 12px);
+        @include mq(margin-block-end, 20px);
+
+        &-title {
+            color: var(--gray-darker);
+            @include mq(margin-block, 20px, 20px, 16px, 16px);
+            @include h4;
+        }
+
+        &-text {
+            color: var(--gray-dark);
+            @include t2
+        }
+    }
+}

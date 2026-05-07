@@ -1,0 +1,105 @@
+.cred-section {
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        margin-block-start: vw(20px);
+        padding-block-start: vw(60px);
+        padding-block-end: vw(120px);
+        border-top: solid var(--gray-lighter);
+        @include border-w(2px);
+        @include gap(32px);
+
+        @include HD {
+            margin-block-start: vwh(20px);
+            padding-block-start: vwh(60px);
+            padding-block-end: vwh(120px);
+        }
+        @include Tablet {
+            margin-block-start: 0;
+            padding-block-start: vwt(32px);
+            padding-block-end: vwt(80px);
+        }
+        @include Mobile {
+            padding-block-start: vwm(32px);
+            padding-block-end: vwm(80px);
+        }
+
+    }
+
+    &__title {
+        color: var(--gray-black);
+        @include h4;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @include mq(gap, 20px, 20px, 16px, 16px);
+
+        @include Mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__table {
+
+        &-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: vw(20px);
+            background: var(--gray-lighter);
+            padding: vw(16px) vw(12px);
+            @include border-r(12px, 12px, 8px, 8px);
+
+            @include HD {
+                gap: vwh(20px);
+                padding: vwh(16px) vwh(12px);
+            }
+            @include Tablet {
+                grid-template-columns: repeat(1, 1fr);
+                grid-template-rows: min-content min-content;
+                gap: vwt(4px);
+                padding: vwt(8px) vwt(12px);
+            }
+            @include Mobile {
+                gap: vwm(4px);
+                padding: vwm(18px) vwm(12px);
+            }
+
+            &:nth-of-type(even) {
+                background: transparent;
+            }
+        }
+
+        &-col {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            &--title {
+                color: var(--gray-medium);
+                @include t2;
+
+                @include Tablet {
+                    @include t3;
+                }
+            }
+
+            &--text {
+                color: var(--gray-dark);
+                @include t2;
+
+                @include Tablet {
+                    @include t3;
+                }
+            }
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        @include gap(12px);
+    }
+}

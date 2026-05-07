@@ -1,0 +1,124 @@
+.manufacture-workshops {
+    background: var(--gray-lighter);
+    @include mq(padding-block, 80px, 80px, 60px, 60px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include mq(gap, 60px, 60px, 32px, 32px);
+    }
+
+    &__top {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: min-content;
+        align-items: end;
+        @include mq(gap, 240px, 96px, 96px, 20px);
+
+        @include Tablet {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        @include t1;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        @include mq(gap, 20px, 20px, 16px, 16px);
+    }
+
+    &__card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: var(--gray-white);
+        border: solid var(--gray-light);
+        @include border-w(2px);
+        @include border-r(28px, 28px, 20px, 20px);
+        @include mq(padding-block, 20px, 20px, 16px, 16px);
+        @include mq(padding-inline, 20px, 20px, 12px, 12px);
+        @include mq(gap, 20px, 20px, 16px, 16px);
+
+        @include Mobile {
+            grid-template-columns: 1fr;
+        }
+
+        &-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--gray-lighter);
+            overflow: hidden;
+            @include border-r(12px);
+            @include mq(padding, 40px, 40px, 12px, 12px);
+            @include gap(40px);
+        }
+
+        &-dot {
+            flex-shrink: 0;
+            color: var(--color1-main);
+            @include icon(24px);
+
+            @include Tablet {
+                @include icon(12px);
+            }
+        }
+
+        &-text {
+            display: flex;
+            flex-direction: column;
+            @include mq(gap, 12px, 12px, 8px, 8px);
+
+        }
+
+        &-title {
+            color: var(--gray-darker);
+            @include h4;
+
+            @include Tablet {
+                @include h5;
+            }
+        }
+
+        &-desc {
+            color: var(--gray-dark);
+            @include t2;
+
+            @include Tablet {
+                @include t3;
+            }
+        }
+
+        &-right {
+            overflow: hidden;
+            background: var(--gray-lighter);
+            @include mq(min-height, 420px, 376px, 260px, 260px);
+            @include border-r(12px);
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    img {
+                        scale: 1.1;
+                    }
+                }
+            }
+
+            &:active {
+                img {
+                    scale: 1;
+                }
+            }
+
+            img {
+                height: 100%;
+                width: 100%;
+                user-select: none;
+                cursor: pointer;
+                @include transition((scale));
+            }
+        }
+    }
+}

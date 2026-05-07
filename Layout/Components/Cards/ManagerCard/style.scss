@@ -1,0 +1,142 @@
+.manager-card {
+    display: grid;
+    padding: vw(20px);
+    background: var(--gray-white);
+    grid-template-columns: max-content;
+    grid-template-areas:
+        'image text'
+        'image links';
+    @include gap(12px);
+    @include border-r(12px);
+
+    @include HD {
+        padding: vwh(20px);
+    }
+    @include Tablet {
+        grid-template-areas:
+        'image text'
+        'links links';
+        padding: vwt(20px);
+    }
+    @include Mobile {
+        padding: vwm(20px);
+    }
+
+    &__image-wrap {
+        grid-area: image;
+        display: flex;
+        flex-shrink: 0;
+        width: fit-content;
+        border-right: solid var(--gray-lighter);
+        padding-right: vw(12px);
+        @include border-w(2px);
+
+        @include HD {
+            padding-right: vw(12px);
+        }
+        @include Tablet {
+            border-right: none;
+            padding-right: 0;
+        }
+        @include Mobile {
+
+        }
+    }
+
+    &__avatar {
+        height: vw(184px);
+        width: vw(184px);
+        user-select: none;
+        @include border-r(8px);
+
+        @include HD {
+            height: vwh(184px);
+            width: vwh(184px);
+        }
+        @include Tablet {
+            height: vwt(64px);
+            width: vwt(64px);
+        }
+        @include Mobile {
+            height: vwm(64px);
+            width: vwm(64px);
+        }
+    }
+
+    &__text {
+        grid-area: text;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__name {
+        color: var(--gray-darker);
+        @include h5;
+    }
+
+    &__job {
+        color: var(--gray-medium);
+        @include t3;
+    }
+
+    &__links {
+        grid-area: links;
+        display: flex;
+        flex-direction: column;
+        border-top: solid var(--gray-lighter);
+        padding-top: vw(12px);
+        @include border-w(2px);
+        @include gap(8px);
+
+        @include HD {
+            padding-top: vwh(12px);
+        }
+        @include Tablet {
+            padding-top: vwt(12px);
+        }
+        @include Mobile {
+            padding-top: vwm(12px);
+        }
+    }
+
+    &__phone, &__email {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: vw(50px);
+        width: fit-content;
+        padding-inline: vw(14px);
+        background: var(--gray-lighter);
+        color: var(--gray-darker);
+        @include h5;
+        @include border-r(8px);
+        @include transition((background, color));
+
+        @include HD {
+            height: vwh(50px);
+            padding-inline: vwh(14px);
+        }
+        @include Tablet {
+            width: 100%;
+            height: vwt(50px);
+            padding-inline: vwt(14px);
+        }
+        @include Mobile {
+            height: vwm(50px);
+            padding-inline: vwm(14px);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: var(--color1-main);
+            }
+        }
+
+        &:active {
+            color: var(--color1-dark);
+            background: var(--color1-lighter);
+        }
+
+    }
+}

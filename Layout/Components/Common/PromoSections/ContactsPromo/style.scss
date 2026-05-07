@@ -1,0 +1,253 @@
+.contacts-promo {
+    padding: vw(40px) 0 vw(120px);
+
+    @include HD {
+        padding: vwh(40px) 0 vwh(120px);
+    }
+    @include Tablet {
+        padding: vwt(40px) 0 vwt(80px);
+    }
+    @include Mobile {
+        padding: vwm(40px) 0 vwm(80px);
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 2fr);
+        grid-template-areas:
+            'info faq delivery'
+            'info guarantee leasing';
+        gap: vw(20px);
+
+        @include HD {
+            gap: vwh(20px);
+        }
+        @include Tablet {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto;
+            grid-template-areas:
+            'info faq'
+            'info delivery'
+            'info guarantee'
+            'info leasing';
+            gap: vwt(8px) vwt(16px);
+        }
+        @include Mobile {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            grid-template-areas:
+            'info'
+            'faq'
+            'delivery'
+            'guarantee'
+            'leasing';
+            gap: vwm(8px);
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        grid-area: info;
+        height: fit-content;
+        padding: vw(32px) vw(40px);
+        background: var(--gray-lighter);
+        @include border-r(20px, 20px, 12px, 12px);
+        @include gap(20px);
+
+        @include HD {
+            padding: vwh(32px) vwh(40px);
+        }
+        @include Tablet {
+            padding: vwt(20px) vwt(16px);
+        }
+        @include Mobile {
+            padding: vwm(20px) vwm(16px);
+            margin-bottom: vwm(8px);
+        }
+
+        &-title {
+            color: var(--gray-black);
+            @include h3;
+        }
+
+        &-wrap {
+            background: var(--gray-white);
+            padding: vw(20px);
+            @include border-r(20px, 20px, 12px, 12px);
+
+            @include HD {
+                padding: vwh(20px);
+            }
+            @include Tablet {
+                padding: vwt(12px);
+            }
+            @include Mobile {
+                padding: vwm(12px);
+            }
+        }
+
+        &-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: vw(12px);
+            padding-block: vw(16px);
+            border-bottom: solid var(--gray-lighter);
+            @include border-w(2px);
+
+            @include HD {
+                gap: vwh(12px);
+                padding-block: vwh(16px);
+            }
+            @include Tablet {
+                gap: vwt(12px);
+                padding-block: vwt(16px);
+            }
+            @include Mobile {
+                gap: vwm(12px);
+                padding-block: vwm(16px);
+            }
+
+            &:first-child {
+                padding-block-start: 0;
+            }
+
+            &:last-child {
+                border: none;
+                padding-block-end: 0;
+            }
+
+            &--social {
+                flex-wrap: wrap;
+            }
+        }
+
+        &-marker {
+            flex-shrink: 0;
+            background: var(--gray-lighter) !important;
+            color: var(--color1-dark) !important;
+        }
+
+        &-button {
+
+        }
+
+        &-text {
+            color: var(--gray-darker);
+            @include t3;
+        }
+    }
+
+    &__button-callback {
+        flex-shrink: 0;
+
+        .btn__text {
+            white-space: nowrap;
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--gray-lighter);
+        padding: vw(20px) vw(20px) vw(20px) vw(40px);
+        @include border-r(20px, 20px, 12px, 12px);
+        @include transition((background));
+        @include gap(12px);
+
+        @include HD {
+            padding: vwh(20px) vwh(20px) vwh(20px) vwh(40px);
+        }
+        @include Tablet {
+            padding: vwt(20px) vwt(12px) vwt(20px) vwt(20px);
+        }
+        @include Mobile {
+            padding: vwm(16px) vwm(12px) vwm(16px) vwm(20px);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                background: var(--gray-light);
+
+                .contacts-promo__card-title {
+                    color: var(--color1-dark);
+                }
+
+                .contacts-promo__card-image {
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        &:active {
+            background: var(--gray-lighter);
+
+            .contacts-promo__card-title {
+                color: var(--color1-dark);
+            }
+
+            .contacts-promo__card-image {
+                transform: scale(1);
+            }
+        }
+
+        &-wrap {
+            display: flex;
+            flex-direction: column;
+            @include gap(8px)
+        }
+
+        &-title {
+            color: var(--gray-black);
+            @include h5;
+            @include transition((color));
+        }
+
+        &-desc {
+            color: var(--gray-dark);
+            @include t2;
+        }
+
+        &-image {
+            user-select: none;
+            flex-shrink: 0;
+            height: vw(100px);
+            width: vw(140px);
+            object-fit: contain;
+            @include transition((transform));
+
+            @include HD {
+                height: vwh(100px);
+                width: vwh(140px);
+            }
+            @include Tablet {
+                height: vwt(90px);
+                width: vwt(125px);
+            }
+            @include Mobile {
+                height: vwm(90px);
+                width: vwm(125px);
+            }
+        }
+
+        &--faq {
+            grid-area: faq;
+        }
+
+        &--delivery {
+            grid-area: delivery;
+        }
+
+        &--guarantee {
+            grid-area: guarantee;
+        }
+
+        &--leasing {
+            grid-area: leasing;
+        }
+    }
+}

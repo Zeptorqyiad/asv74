@@ -1,0 +1,72 @@
+.error-section {
+    padding: vw(160px) 0;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__error-text {
+        text-align: center;
+        color: var(--color1-main);
+        @include h2;
+    }
+
+    &__icon {
+
+        @include icon(56px);
+    }
+
+    &__title {
+        text-align: center;
+        color: var(--gray-darker);
+        margin-top: vw(28px);
+        @include h5;
+
+        @include HD {
+            margin-top: vwh(28px);
+        }
+        @include Tablet {
+            margin-top: vwt(28px);
+        }
+        @include Mobile {
+            margin-top: vwm(28px);
+        }
+    }
+
+    &__desc {
+        text-align: center;
+        color: var(--gray-dark);
+        max-width: 67ch;
+        margin-top: vw(10px);
+        @include t2;
+
+        @include HD {
+            margin-top: vwh(10px);
+        }
+        @include Tablet {
+            margin-top: vwt(10px);
+        }
+        @include Mobile {
+            margin-top: vwm(10px);
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: row;
+        margin-top: vw(40px);
+        @include gap(12px);
+
+        @include HD {
+            margin-top: vwh(40px);
+        }
+        @include Tablet {
+            margin-top: vwt(40px);
+        }
+        @include Mobile {
+            margin-top: vwm(40px);
+        }
+    }
+}

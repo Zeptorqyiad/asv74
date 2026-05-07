@@ -1,0 +1,120 @@
+.manufacture-advantages {
+    @include mq(padding-block-start, 40px);
+    @include mq(padding-block-end, 80px, 80px, 60px, 60px);
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: min-content 1fr;
+        align-items: start;
+        grid-template-areas:
+                'title list'
+                'image list';
+        gap: vw(40px) vw(60px);
+
+        @include HD {
+            gap: vwh(40px) vwh(60px) ;
+        }
+        @include Tablet {
+            grid-template-areas:
+                'title .'
+                'image list';
+            gap: vwt(16px) vwt(32px);
+        }
+        @include Mobile {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-areas:
+                'title'
+                'list'
+                'image';
+            gap: vwm(16px) vwm(32px);
+        }
+    }
+
+    &__title {
+        grid-area: title;
+
+        @include Mobile {
+            margin-bottom: vwm(16px);
+        }
+    }
+
+    &__image {
+        grid-area: image;
+        position: sticky;
+        overflow: hidden;
+        @include mq(height, 460px, 410px, 250px, 240px);
+        @include border-r(20px, 20px, 12px, 12px);
+        @include mq(top, 124px, 124px, 70px, 0);
+
+        img {
+            user-select: none;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &__list {
+        grid-area: list;
+        display: flex;
+        flex-direction: column;
+        background: var(--gray-lighter);
+        overflow: hidden;
+        height: fit-content;
+        @include border-r(20px, 20px, 12px, 12px);
+        @include mq(padding-block, 40px, 40px, 20px, 20px);
+        @include mq(padding-inline, 40px, 40px, 12px, 12px);
+        @include mq(gap, 20px, 20px, 16px, 16px);
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: row;
+        background: var(--gray-white);
+        overflow: hidden;
+        @include border-r(12px, 12px, 8px, 8px);
+        @include gap(20px);
+        @include mq(padding-block, 20px, 20px, 12px, 12px);
+        @include mq(padding-inline, 20px, 20px, 16px, 16px);
+
+        @include Tablet {
+            flex-direction: column;
+        }
+
+        &-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: var(--gray-lighter);
+            border: solid var(--gray-light);
+            @include border-r(8px);
+            @include mq(height, 96px, 96px, 64px, 64px);
+            @include mq(width, 96px, 96px, 64px, 64px);
+            @include border-w(2px);
+
+            img {
+                user-select: none;
+                object-fit: contain;
+                @include mq(height, 56px, 56px, 40px, 40px);
+                @include mq(width, 56px, 56px, 40px, 40px);
+            }
+        }
+
+        &-text {
+            display: flex;
+            flex-direction: column;
+            @include mq(gap, 12px, 12px, 8px, 8px);
+        }
+
+        &-title {
+            color: var(--gray-darker);
+            @include h5;
+        }
+
+        &-desc {
+            color: var(--gray-dark);
+            @include t2;
+        }
+    }
+}

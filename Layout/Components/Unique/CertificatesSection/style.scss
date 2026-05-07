@@ -1,0 +1,46 @@
+.certificates-section {
+    @include mq(padding-block-start, 40px, 40px, 20px, 20px);
+    @include mq(padding-block-end, 80px);
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        @include gap(40px);
+
+        @include Tablet {
+            flex-direction: column;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        @include mq(gap, 40px, 40px, 32px, 32px);
+    }
+
+    &__category {
+
+        &-title {
+            color: var(--gray-darker);
+            @include h4;
+        }
+
+        &-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: vw(40px) vw(20px);
+
+            @include HD {
+                gap: vwh(40px) vwh(20px);
+            }
+            @include Tablet {
+                gap: vwt(32px) vwt(16px);
+            }
+            @include Mobile {
+                grid-template-columns: repeat(2, 1fr);
+                gap: vwm(32px) vwm(16px);
+            }
+        }
+    }
+}

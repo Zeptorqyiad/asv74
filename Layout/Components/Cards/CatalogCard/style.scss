@@ -1,0 +1,464 @@
+.catalog-card {
+    position: relative;
+    cursor: pointer;
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .catalog-card__container {
+                background: var(--gray-lighter);
+            }
+
+            .catalog-card__title {
+                color: var(--color1-main);
+            }
+
+            .catalog-card__image-gallery img {
+                transform: scale(1.1);
+            }
+
+            @include Tablet {
+                .catalog-card__container {
+                    background: var(--gray-white);
+                }
+            }
+        }
+    }
+
+    &:active {
+        .catalog-card__title {
+            color: var(--color1-darker);
+        }
+
+        .catalog-card__image-gallery img {
+            transform: scale(1);
+        }
+    }
+
+    &__link {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: vw(12px);
+        background: var(--gray-white);
+        @include transition((background));
+        @include border-r(20px, 12px, 8px, 8px);
+
+        @include HD {
+            padding: vwh(12px);
+        }
+        @include Tablet {
+            flex-direction: column;
+            align-items: unset;
+            justify-content: unset;
+            padding: 0;
+        }
+    }
+
+    &__status-badges {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        @include gap(8px);
+    }
+
+    &__badge {
+        height: vw(24px) !important;
+        border-radius: vw(12px) !important;
+
+        @include HD {
+            height: vwh(24px) !important;
+            border-radius: vwh(12px) !important;
+        }
+        @include Tablet {
+            height: vwt(24px) !important;
+            border-radius: vwt(12px) !important;
+        }
+        @include Mobile {
+            height: vwm(24px) !important;
+            border-radius: vwm(12px) !important;
+        }
+
+        &--to-order {
+            color: var(--uniq-blue) !important;
+        }
+
+        &--is-new {
+            color: var(--uniq-yellow) !important;
+        }
+
+        &--in-stock {
+            color: var(--uniq-green) !important;
+        }
+
+        &--sale {
+            color: var(--uniq-red) !important;
+        }
+
+        &.catalog-card__badge--fabric {
+            color: var(--color1-darker);
+            background: var(--gray-light);
+            border: none;
+        }
+
+        &.catalog-card__badge--chassis-dep {
+            color: var(--gray-white);
+            background: var(--gradient1-dark);
+            border: none;
+        }
+    }
+
+    &__media {
+        position: relative;
+        flex-shrink: 0;
+
+        @include Tablet {
+            height: vwt(278px);
+        }
+
+        @include Mobile {
+            height: vwm(270px);
+        }
+    }
+
+    &__image-container {
+        display: flex;
+        flex-direction: row;
+        height: vw(240px);
+        @include gap(4px);
+
+        @include HD {
+            height: vwh(240px);
+        }
+        @include Tablet {
+            height: 100%;
+        }
+    }
+
+    &__image-gallery {
+        flex-shrink: 0;
+        width: vw(320px) !important;
+        overflow: hidden;
+        z-index: 1;
+        @include border-r(12px);
+
+        @include HD {
+            width: vwh(260px) !important;
+        }
+        @include Tablet {
+            max-width: vwt(364px);
+            width: 100%;
+        }
+        @include Mobile {
+            max-width: vwm(342px);
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            @include transition((transform));
+        }
+    }
+
+    &__images-aside {
+        flex-shrink: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        width: vw(84px);
+        @include gap(4px);
+
+        @include HD {
+            grid-template-rows: repeat(3, 1fr);
+            width: vwh(84px);
+        }
+        @include Tablet {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            @include border-r(12px);
+
+            &:nth-child(n+5) {
+                display: none;
+            }
+
+            @include HD {
+                &:nth-child(n+4) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &__pagination {
+        position: absolute;
+        top: unset !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        display: flex;
+        height: fit-content !important;
+        width: fit-content !important;
+        margin-inline: auto;
+        overflow: hidden;
+        margin-block: vw(8px);
+        z-index: 2;
+
+        @include HD {
+            margin-block: vwh(8px);
+        }
+        @include Tablet {
+            margin-block: vwt(8px);
+        }
+        @include Mobile {
+            margin-block: vwm(8px);
+        }
+
+        .swiper-pagination-bullet {
+            height: vw(4px);
+            width: vw(8px);
+            padding: vw(2px);
+            margin: 0 vw(2px) !important;
+            background: var(--gray-medium) !important;
+            transition: width 1s var(--ease-spring), background 0.4s var(--cubic-bezier);
+            transform-origin: center !important;
+            opacity: 1 !important;
+            @include border-r(8px);
+
+            @include HD {
+                height: vwh(4px);
+                width: vwh(8px);
+                padding: vwh(2px);
+                margin: 0 vwh(2px) !important;
+            }
+            @include Tablet {
+                height: vwt(4px);
+                width: vwt(8px);
+                padding: vwt(2px);
+                margin: 0 vwt(2px) !important;
+            }
+            @include Mobile {
+                height: vwm(4px);
+                width: vwm(8px);
+                padding: vwm(2px);
+                margin: 0 vwm(2px) !important;
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--gray-dark) !important;
+                }
+            }
+
+            &-active {
+                width: vw(16px);
+                background: var(--gray-dark) !important;
+
+                @include HD {
+                    width: vwh(16px);
+                }
+                @include Tablet {
+                    width: vwt(16px);
+                }
+                @include Mobile {
+                    width: vwm(16px);
+                }
+            }
+        }
+    }
+
+    &__content {
+        width: 100%;
+        margin-block: auto;
+        border-right: solid var(--gray-lighter);
+        @include border-w(2px);
+
+        @include Tablet {
+            border: none;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        margin-inline: vw(32px);
+        margin-block: auto;
+        @include gap(8px);
+
+        @include HD {
+            margin-inline: vwh(32px);
+        }
+        @include Tablet {
+            margin-inline: 0;
+            margin-block: 0;
+        }
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h5;
+        @include transition((color));
+        @include truncate(2);
+    }
+
+    &__sku {
+        color: var(--gray-medium);
+        @include t2;
+        @include truncate(1);
+        font-weight: 600;
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        @include t3;
+        @include truncate(3);
+
+        @include Tablet {
+            @include truncate(2);
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        @include spacing(padding-block, 20px);
+        @include spacing(padding-inline, 40px);
+        background: var(--gray-white);
+        @include gap(12px);
+        @include border-r(12px);
+        @include spacing(width, 350px, 330px);
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__action-buttons {
+        display: flex;
+        flex-direction: column;
+        padding-top: vw(12px);
+        border-top: solid var(--gray-lighter);
+        @include gap(12px);
+        @include border-w(2px);
+
+        @include HD {
+            padding-top: vwh(12px);
+        }
+        @include Tablet {
+            padding-top: vwt(12px);
+        }
+        @include Mobile {
+            padding-top: vwm(12px);
+        }
+    }
+
+    &__control-buttons {
+        display: flex;
+        @include gap(12px)
+    }
+
+    &__prices {
+        display: flex;
+        flex-direction: column;
+        @include gap(4px);
+    }
+
+    &__price {
+
+        &--request {
+            color: var(--gray-medium);
+            @include h5;
+        }
+
+        &--current {
+            color: var(--gray-darker);
+            @include h5;
+        }
+
+        &--old {
+            color: var(--color1-dark);
+            text-decoration: line-through solid currentColor;
+            @include t3;
+        }
+    }
+
+    &__button-compare {
+        position: relative;
+        z-index: 3;
+    }
+
+    &__button-specification {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-shrink: 0;
+        color: var(--gray-darker);
+        background: var(--gray-lighter);
+        height: vw(32px);
+        padding-inline: vw(12px);
+        @include border-r(8px);
+        @include gap(4px);
+        @include transition((color, background));
+
+        @include HD {
+            height: vwh(32px);
+            padding-inline: vwh(12px);
+        }
+        @include Tablet {
+            height: vwt(24px);
+            padding-inline: vwt(8px);
+        }
+        @include Mobile {
+            height: vwm(24px);
+            padding-inline: vwm(8px);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: var(--color1-main);
+                background: var(--color1-lighter);
+            }
+        }
+
+        &:active {
+            color: var(--color1-darker);
+            background: var(--color1-light);
+        }
+
+        span {
+            @include t3;
+
+            @include Tablet {
+                @include t4;
+            }
+        }
+
+        svg {
+            flex-shrink: 0;
+            @include icon(16px);
+            @include transition((transform));
+        }
+    }
+
+    &__button-order {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+    }
+}

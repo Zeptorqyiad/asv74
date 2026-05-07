@@ -1,0 +1,23 @@
+.preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    background: var(--gray-white);
+    @include transition((opacity), 0.4s);
+
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+        user-select: auto;
+    }
+
+    &__icon {
+        color: var(--color1-main);
+        @include icon(60px);
+    }
+}

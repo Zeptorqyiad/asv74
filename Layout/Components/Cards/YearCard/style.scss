@@ -1,0 +1,146 @@
+.year-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: center;
+    background: var(--gray-lighter);
+    border: solid transparent;
+    cursor: pointer;
+    overflow: hidden;
+    transform-origin: left top;
+    --transition-timing: 0.6s;
+    @include mq(gap, 20px, 20px, 12px, 12px);
+    @include mq(padding, 28px, 28px, 12px, 12px);
+    @include mq(width, 100px, 88px, 56px, 48px);
+    @include mq(min-height, 320px, 320px, 260px, 290px);
+    @include border-r(20px, 20px, 12px, 12px);
+    @include border-w(2px);
+    @include transition((border-color, width), var(--transition-timing));
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            border-color: var(--gray-light);
+
+            .year-card__title-preview {
+                color: var(--gray-darker);
+            }
+        }
+    }
+
+    &:active {
+        border-color: var(--color1-dark);
+
+        .year-card__title-preview {
+            color: var(--color1-dark);
+        }
+    }
+
+    &.active {
+        border-color: var(--gray-light);
+        @include mq(width, 580px, 520px, 360px, 290px);
+
+        .year-card__title {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .year-card__content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .year-card__title-preview {
+            opacity: 0;
+            transform: translateY(150%);
+        }
+
+        &:active {
+            border-color: var(--gray-medium);
+        }
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        opacity: 0;
+        text-transform: uppercase;
+        transform: translateY(-250%);
+        @include h2;
+        @include transition((color, opacity, transform), var(--transition-timing), var(--ease-spring));
+        @include truncate(1);
+
+        &-preview {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            text-transform: uppercase;
+            color: var(--gray-medium);
+            writing-mode: sideways-lr;
+            text-orientation: mixed;
+            text-align: left;
+            user-select: none;
+            opacity: 1;
+            transform: translateY(0);
+            @include h2;
+            @include transition((color, opacity, transform), var(--transition-timing), var(--ease-spring));
+            @include truncate(1);
+            @include mq(left, 24px, 16px, 10px, 6px);
+            @include mq(bottom, 20px);
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        border-top: solid var(--gray-light);
+        opacity: 0;
+        transform: translateX(100%);
+        @include border-w(2px);
+        @include mq(padding-top, 20px, 20px, 12px, 12px);
+        @include mq(width, 524px, 464px, 336px, 266px);
+        @include mq(gap, 16px, 16px, 8px, 8px);
+        @include transition((opacity, transform), var(--transition-timing));
+    }
+
+    &__row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @include mq(gap, 12px, 12px, 8px, 8px);
+
+        &-marker {
+            flex-shrink: 0;
+            background: var(--gray-white) !important;
+            color: var(--color1-main) !important;
+
+            @include Tablet {
+                width: vwt(34px) !important;
+                height: vwt(34px) !important;
+            }
+            @include Mobile {
+                width: vwm(34px) !important;
+                height: vwm(34px) !important;
+            }
+
+            .marker__icon {
+                @include Tablet {
+                    width: vwt(16px) !important;
+                    height: vwt(16px) !important;
+                }
+                @include Mobile {
+                    width: vwm(16px) !important;
+                    height: vwm(16px) !important;
+                }
+            }
+        }
+
+        &-text {
+            color: var(--gray-dark);
+            @include t2;
+
+            @include Tablet {
+                @include t3;
+            }
+        }
+    }
+}

@@ -1,0 +1,139 @@
+.comparison-sheet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    width: 100%;
+    background: var(--gray-white);
+    transform: translateY(0) translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    z-index: 95;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    @include transition((transform, opacity));
+
+    &.collapsed {
+        transform: translateY(vw(-50px)) translateZ(0);
+
+        @include HD {
+            transform: translateY(vwh(-50px)) translateZ(0);
+        }
+        @include Tablet {
+            transform: translateY(0) translateZ(0);
+        }
+    }
+
+    &.sticky {
+        pointer-events: auto;
+        user-select: auto;
+        opacity: 1;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-bottom: solid var(--gray-lighter);
+        @include mq(gap, 20px, 20px, 16px, 16px);
+        @include mq(padding-top, 140px, 140px, 68px, 68px);
+        @include mq(padding-bottom, 20px);
+        @include border-w(2px);
+    }
+
+    &__top {
+        display: flex;
+        flex-direction: column;
+        border-top: solid var(--gray-lighter);
+        padding-block-start: vw(12px);
+        padding-block-end: vw(20px);
+        overflow: hidden;
+        background: var(--gray-white);
+        border-bottom: solid var(--gray-lighter);
+        @include gap(20px);
+        @include border-w(2px);
+
+        @include HD {
+            padding-block-start: vwh(12px);
+            padding-block-end: vwh(20px);
+        }
+        @include Tablet {
+            padding-block-start: 0;
+            padding-block-end: vwt(20px);
+            border-top: none;
+        }
+        @include Mobile {
+            padding-block-end: vwm(20px);
+        }
+    }
+
+    &__tab-list {
+        display: flex;
+        flex-direction: row;
+        @include gap(20px);
+
+        @include Tablet {
+            flex-wrap: nowrap;
+            overflow: scroll;
+            @include hide-scrollbar;
+        }
+    }
+
+    &__tab {
+        .tab__badge {
+            color: var(--gray-dark) !important;
+            background: var(--gray-lighter) !important;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @include gap(20px);
+
+        @include Tablet {
+            flex-wrap: nowrap;
+            overflow: scroll;
+            @include hide-scrollbar;
+        }
+    }
+
+    &__controls {
+        display: flex;
+        flex-direction: row;
+        @include gap(12px);
+
+        @include Tablet {
+            flex-shrink: 0;
+        }
+    }
+
+    &__button {
+
+        &-add {
+
+        }
+
+        &-clear {
+
+        }
+    }
+
+    &__buttons-navigation {
+        display: flex;
+        flex-direction: row;
+        @include gap(12px);
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__products-slider {
+        overflow: hidden;
+        @include border-r(8px);
+    }
+}

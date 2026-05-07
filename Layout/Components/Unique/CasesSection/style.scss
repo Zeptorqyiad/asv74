@@ -1,0 +1,33 @@
+.cases-section {
+    padding-block-start: vw(20px);
+    padding-block-end: vw(120px);
+
+    @include HD {
+        padding-block-start: vwh(20px);
+        padding-block-end: vwh(120px);
+    }
+    @include Tablet {
+        padding-block-start: vwt(16px);
+        padding-block-end: vwt(80px);
+    }
+    @include Mobile {
+        padding-block-start: vwm(16px);
+        padding-block-end: vwm(80px);
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        @include gap(20px);
+
+        @include HD {
+
+        }
+        @include Tablet {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include Mobile {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}

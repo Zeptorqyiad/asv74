@@ -1,0 +1,307 @@
+.case-fs {
+    @include mq(padding-block-start, 20px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include mq(gap, 40px, 40px, 32px, 32px);
+    }
+
+    &__title {
+        color: var(--gray-black);
+        max-width: 42ch;
+        @include h3;
+
+        @include Tablet {
+            max-width: unset;
+        }
+    }
+
+    &__media {
+        width: 100%;
+    }
+
+    &__image-container {
+        display: flex;
+        flex-direction: row;
+        height: vw(580px);
+        @include gap(12px);
+
+        @include HD {
+            height: vwh(530px);
+        }
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__image-gallery {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        background: var(--gray-lighter);
+        @include border-r(28px);
+    }
+
+    &__main-slider {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    &__main-slider-pagination {
+        display: flex;
+        margin-top: vw(12px);
+        height: fit-content !important;
+        width: fit-content !important;
+        margin-inline: auto;
+        overflow: hidden;
+
+        @include HD {
+            margin-top: vwh(12px);
+        }
+        @include Tablet {
+            display: none;
+            margin-top: vwt(12px);
+        }
+        @include Mobile {
+            margin-top: vwm(12px);
+        }
+
+        .swiper-pagination-bullet {
+            height: vw(8px);
+            width: vw(20px);
+            padding: vw(4px);
+            background: var(--gray-light) !important;
+            transition: width 1s var(--ease-spring), background 0.4s var(--cubic-bezier);
+            opacity: 1 !important;
+            @include border-r(8px);
+
+            @include HD {
+                height: vwh(8px);
+                width: vwh(20px);
+                padding: vwh(4px);
+            }
+            @include Tablet {
+                height: vwt(4px);
+                width: vwt(8px);
+                padding: vwt(2px);
+            }
+            @include Mobile {
+                height: vwm(4px);
+                width: vwm(8px);
+                padding: vwm(2px);
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--gray-medium) !important;
+                }
+            }
+
+            &-active {
+                width: vw(40px);
+                background: var(--gray-medium) !important;
+
+                @include HD {
+                    width: vwh(40px);
+                }
+                @include Tablet {
+                    width: vwt(16px);
+                }
+                @include Mobile {
+                    width: vwm(16px);
+                }
+            }
+        }
+    }
+
+    &__main-slide {
+
+    }
+
+    &__main-image {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        @include border-r(28px);
+    }
+
+    &__slider-button {
+        &--prev {
+            position: absolute;
+            z-index: 3;
+            top: 45%;
+            @include mq(left, 12px)
+        }
+
+        &--next {
+            position: absolute;
+            z-index: 3;
+            top: 45%;
+            @include mq(right, 12px)
+        }
+    }
+
+    &__images-aside {
+        position: relative;
+        display: flex;
+        flex-shrink: 0;
+        width: vw(220px);
+        padding-inline: max(#{vw(2px), 2px});
+        overflow: hidden;
+        @include border-r(20px);
+
+        @include HD {
+            width: vwh(220px);
+            padding-inline: max(#{vwh(2px), 2px});
+        }
+        @include Tablet {
+            width: vwt(140px);
+            padding-inline: max(#{vwt(2px), 2px});
+        }
+        @include Mobile {
+            width: vwm(140px);
+            padding-inline: max(#{vwm(2px), 2px});
+        }
+    }
+
+    &__slide-thumb {
+        width: vw(220px);
+        border: solid transparent;
+        cursor: pointer;
+        user-select: none;
+        opacity: .5;
+        background: var(--gray-lighter);
+        @include border-w(2px);
+        @include border-r(20px);
+        @include transition((border-color, opacity, transform));
+
+        @include HD {
+            width: vwh(220px);
+        }
+        @include Tablet {
+            width: vwt(140px);
+        }
+        @include Mobile {
+            width: vwm(140px);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                opacity: .7;
+            }
+        }
+
+        &:active {
+            opacity: .7;
+            transform: scale(.97);
+        }
+
+        &.swiper-slide-thumb-active {
+            opacity: 1;
+            pointer-events: none;
+            border-color: var(--color1-main);
+        }
+    }
+
+    &__slider {
+        display: none;
+        overflow: hidden;
+
+        @include Tablet {
+            display: block;
+        }
+
+        &-wrap {
+            overflow: hidden;
+            @include border-r(20px);
+        }
+    }
+
+    &__slide {
+        overflow: hidden;
+        width: 100%;
+        height: vw(406px);
+        @include border-r(20px);
+
+        @include HD {
+            height: vwh(406px);
+        }
+        @include Tablet {
+            height: vwt(360px);
+        }
+        @include Mobile {
+            height: vwm(220px);
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            background: var(--gray-lighter);
+        }
+    }
+
+    &__slider-pagination {
+        display: flex;
+        height: fit-content !important;
+        width: fit-content !important;
+        margin-inline: auto;
+        overflow: hidden;
+        @include mq(margin-top, 12px);
+
+        .swiper-pagination-bullet {
+            height: vw(4px);
+            width: vw(8px);
+            padding: vw(2px);
+            margin: 0 vw(2px) !important;
+            background: var(--gray-lighter) !important;
+            transition: width 1s var(--ease-spring), background 0.4s var(--cubic-bezier);
+            transform-origin: center !important;
+            opacity: 1 !important;
+            @include border-r(8px);
+
+            @include HD {
+                height: vwh(4px);
+                width: vwh(8px);
+                padding: vwh(2px);
+                margin: 0 vwh(2px) !important;
+            }
+            @include Tablet {
+                height: vwt(4px);
+                width: vwt(8px);
+                padding: vwt(2px);
+                margin: 0 vwt(2px) !important;
+            }
+            @include Mobile {
+                height: vwm(4px);
+                width: vwm(8px);
+                padding: vwm(2px);
+                margin: 0 vwm(2px) !important;
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--gray-dark) !important;
+                }
+            }
+
+            &-active {
+                width: vw(16px);
+                background: var(--gray-medium) !important;
+
+                @include HD {
+                    width: vwh(16px);
+                }
+                @include Tablet {
+                    width: vwt(16px);
+                }
+                @include Mobile {
+                    width: vwm(16px);
+                }
+            }
+        }
+    }
+}

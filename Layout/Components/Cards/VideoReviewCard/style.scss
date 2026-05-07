@@ -1,0 +1,31 @@
+.video-review-card {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    @include gap(8px);
+
+    &__player {
+        height: vw(150px) !important;
+        border-radius: vw(12px);
+
+        @include HD {
+            height: vwh(135px) !important;
+            border-radius: vwh(12px)
+        }
+        @include Tablet {
+            height: vwt(124px) !important;
+            border-radius: vwt(8px)
+        }
+        @include Mobile {
+            height: vwm(124px) !important;
+            border-radius: vwm(8px)
+        }
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        height: 2lh;
+        @include t2;
+        @include truncate(2);
+    }
+}

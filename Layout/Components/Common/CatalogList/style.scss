@@ -1,0 +1,169 @@
+.catalog-list {
+    @include mq(margin-bottom, 40px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        color: var(--color1-main);
+        margin-bottom: vw(20px);
+        @include h3;
+
+        @include HD {
+            margin-bottom: vwh(20px);
+        }
+        @include Tablet {
+            margin-bottom: vwt(20px);
+        }
+        @include Mobile {
+            margin-bottom: vwm(20px);
+        }
+    }
+
+    &__group {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content 1fr;
+        @include transition((grid-template-rows), 0.3s);
+
+        &.collapsed {
+            grid-template-rows: min-content 0fr;
+
+            .catalog-list__group-top svg {
+                transform: rotateX(180deg);
+            }
+
+            .catalog-list__group-body {
+                opacity: 0;
+            }
+        }
+
+        &--default {
+            .catalog-list__group-top {
+                display: none;
+            }
+
+            .catalog-list__group-cards {
+                margin-top: 0;
+            }
+        }
+
+        &-top {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: vw(20px);
+            width: 100%;
+            background: var(--gray-lighter);
+            color: var(--gray-black);
+            border: solid transparent;
+            @include border-r(12px);
+            @include border-w(1px);
+            @include transition((background, color, border-color));
+
+            @include HD {
+                padding: vwh(20px);
+            }
+            @include Tablet {
+                padding: vwt(16px) vwt(12px);
+            }
+            @include Mobile {
+                padding: vwm(16px) vwm(12px);
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    color: var(--color1-main);
+                    border-color: var(--gray-light);
+                }
+            }
+
+            &:active {
+                color: var(--color1-main);
+                background: var(--gray-light);
+                border-color: var(--gray-light);
+            }
+
+            h3 {
+
+                @include h4;
+            }
+
+            svg {
+                flex-shrink: 0;
+                @include icon(24px);
+                @include transition((transform));
+            }
+        }
+
+        &-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: min-content;
+            margin-top: vw(24px);
+            gap: vw(16px);
+
+            @include HD {
+                margin-top: vwh(24px);
+                gap: vwh(16px);
+            }
+            @include Tablet {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+                margin-top: vwt(12px);
+                gap: vwt(32px) vwt(16px);
+            }
+            @include Mobile {
+                grid-template-columns: 1fr;
+                margin-top: vwm(12px);
+                gap: vwm(32px);
+            }
+
+            &--desktop {
+                @include Tablet {
+                    display: none;
+                }
+            }
+
+            &--mobile {
+                display: none;
+
+                @include Tablet {
+                    display: grid;
+                }
+            }
+        }
+
+        &-body {
+            overflow: hidden;
+            opacity: 1;
+            @include transition((opacity), 0.4s);
+        }
+    }
+
+    &__card {
+    }
+
+    &__pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: vw(24px);
+
+        @include HD {
+            margin-top: vwh(24px);
+        }
+        @include Tablet {
+            margin-top: vwt(20px);
+        }
+        @include Mobile {
+            margin-top: vwm(20px);
+        }
+    }
+
+    &__button-pagination {
+
+    }
+}

@@ -1,0 +1,95 @@
+{
+  "name": "growtask/simflex-template",
+  "description": "Simflex CMS",
+  "keywords": [
+    "php",
+    "simplex-admin",
+    "simplex-cms",
+    "simflex"
+  ],
+  "homepage": "https://github.com/growtask/simflex-template",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Denis Glushkov",
+      "email": "amkarovec@gmail.com",
+      "homepage": "https://github.com/glushkovds"
+    },
+    {
+      "name": "pf",
+      "homepage": "https://pff.su"
+    }
+  ],
+  "require": {
+    "php": ">=8.2.0",
+    "ext-gd": "*",
+    "growtask/simflex": "3.*",
+    "vlucas/phpdotenv": "^5.4",
+    "scssphp/scssphp": "^1.11",
+    "tubalmartin/cssmin": "^4.1",
+    "ext-readline": "*",
+    "growtask/simflex-file-manager": "dev-master",
+    "ext-pdo": "*",
+    "simflex/catalog": "^1.0",
+    "simflex/ecom": "dev-master",
+    "simflex/user": "dev-master",
+    "dompdf/dompdf": "^3.1",
+    "phpmailer/phpmailer": "^6.10"
+  },
+  "require-dev": {
+    "codeception/module-phpbrowser": "*",
+    "codeception/module-asserts": "*",
+    "composer/composer": "*",
+    "codeception/module-filesystem": "^3.0",
+    "codeception/module-webdriver": "^4.0"
+  },
+  "suggest": {
+  },
+  "scripts": {
+    "post-package-install": [
+      "App\\Extensions\\Install\\PackageInstaller::onPackageEvent"
+    ],
+    "post-package-update": [
+      "App\\Extensions\\Install\\PackageInstaller::onPackageEvent"
+    ],
+    "post-install-cmd": [
+      "php console.php install/install",
+      "./codecept run --steps"
+    ],
+    "post-update-cmd": [
+      "php console.php migrate/up",
+      "php console.php seed/run"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": ""
+    }
+  },
+  "repositories": [
+    {
+      "url": "https://github.com/growtask/simflex.git",
+      "type": "git"
+    },
+    {
+	    "url": "https://git.sn9.ru/simflex/catalog.git",
+	    "type": "git"
+
+    },
+    {
+	    "url": "https://git.sn9.ru/simflex/ecom.git",
+	    "type": "git"
+
+    },
+    {
+	    "url": "https://git.sn9.ru/simflex/user.git",
+	    "type": "git"
+
+    }
+
+
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

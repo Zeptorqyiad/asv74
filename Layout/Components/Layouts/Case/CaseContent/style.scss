@@ -1,0 +1,36 @@
+.case-content {
+    display: flex;
+    justify-content: center;
+    border-bottom: solid var(--gray-lighter);
+    @include mq(margin-block-start, 40px, 40px, 32px, 32px);
+    @include mq(padding-block-end, 40px, 40px, 32px, 32px);
+    @include border-w(2px);
+
+    &__container {
+
+    }
+
+    &__badges {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        @include gap(8px);
+        @include mq(margin-bottom, 20px);
+    }
+
+    &__badge {
+        background: var(--gray-light) !important;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__actions {
+        border-top: solid var(--gray-lighter);
+        @include mq(padding-top, 28px);
+        @include mq(margin-top, 28px);
+        @include border-w(2px);
+    }
+}

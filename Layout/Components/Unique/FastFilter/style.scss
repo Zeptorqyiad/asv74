@@ -1,0 +1,51 @@
+.fast-filter {
+    padding-block: vw(20px);
+
+    @include HD {
+        padding-block: vwh(20px);
+    }
+    @include Tablet {
+        padding-block: vwt(16px);
+    }
+    @include Mobile {
+        padding-block: vwm(16px);
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__controls {
+        display: flex;
+        flex-direction: row;
+        @include gap(8px);
+    }
+
+    &__tabs, &__tags {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: vw(12px);
+        margin-top: vw(12px);
+        border-top: solid var(--gray-lighter);
+        @include gap(8px);
+        @include border-w(2px);
+        @include hide-scrollbar;
+
+        @include HD {
+            padding-top: vwh(12px);
+            margin-top: vwh(12px);
+        }
+        @include Tablet {
+            padding-top: vwt(8px);
+            margin-top: vwt(8px);
+            flex-wrap: nowrap;
+            overflow-y: scroll;
+        }
+        @include Mobile {
+            padding-top: vwm(8px);
+            margin-top: vwm(8px);
+        }
+    }
+}

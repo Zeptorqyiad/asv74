@@ -1,0 +1,67 @@
+.department-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--gray-white);
+    height: fit-content;
+    @include border-r(12px);
+    @include gap(16px);
+    @include mq(padding, 20px);
+
+    &.construct {
+        grid-area: construct;
+    }
+
+    &.quality {
+        grid-area: quality;
+    }
+
+    &.supply {
+        grid-area: supply;
+    }
+
+    &.sales {
+        grid-area: sales;
+    }
+
+    &.marketing {
+        grid-area: marketing;
+    }
+
+    &__title {
+        color: var(--gray-black);
+        @include t1-b;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        background: var(--gray-lighter);
+        @include mq(gap, 12px, 12px, 8px, 8px);
+        @include mq(padding-block, 16px, 16px, 12px, 12px);
+        @include mq(padding-inline, 12px, 12px, 8px, 8px);
+        @include border-r(12px);
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @include gap(12px);
+
+        &:not(:first-of-type) {
+            border-top: solid var(--gray-white);
+            @include mq(padding-top, 12px, 12px, 8px, 8px);
+        }
+
+        &-marker {
+            flex-shrink: 0;
+            background: var(--color1-lighter) !important;
+            color: var(--gray-dark) !important;
+        }
+
+        &-text {
+            color: var(--gray-darker);
+            @include t2;
+        }
+    }
+}

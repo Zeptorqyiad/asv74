@@ -1,0 +1,61 @@
+.service-process {
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include mq(gap, 60px, 60px, 40px, 32px);
+    }
+
+    &__steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        @include mq(gap, 20px, 20px, 16px, 16px);
+
+        @include Tablet {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include Mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__step {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: var(--gray-lighter);
+        @include border-r(12px);
+        @include mq(padding, 20px);
+        @include mq(margin-top, 24px);
+        @include gap(12px);
+
+        &-badge {
+            position: absolute;
+            rotate: -4deg;
+            @include mq(top, -20px);
+        }
+
+        &-title {
+            color: var(--gray-darker);
+            @include h5;
+        }
+
+        &-desc {
+            color: var(--gray-dark);
+            @include t2;
+
+            @include Tablet {
+                @include t3;
+            }
+        }
+
+        &:last-of-type {
+            background: var(--gray-light);
+
+            .service-process__step-badge {
+                background: var(--color1-light);
+                color: var(--gray-white);
+            }
+        }
+    }
+}

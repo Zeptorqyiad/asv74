@@ -1,0 +1,30 @@
+// For quick fixes to be refactored later
+.swiper-button-lock {
+    display: none !important;
+}
+
+.simplebar-scrollbar::before {
+    background-color:  var(--color1-light);
+}
+
+.simplebar-horizontal {
+    display: none;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
+    top: 0;
+    bottom: 0;
+}
+
+.simplebar-scrollbar {
+    min-height: auto;
+}
+
+.simplebar-scrollbar.simplebar-visible::before {
+    background-color:  var(--color1-main);
+    opacity: 0.5;
+}
+
+:root {
+    --fancybox-scrollbar-compensate: 0 !important;
+}

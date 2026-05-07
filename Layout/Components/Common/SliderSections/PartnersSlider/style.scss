@@ -1,0 +1,128 @@
+.partners-slider {
+    position: relative;
+
+    &__container {
+        position: relative;
+        padding: vw(80px) 0 vw(80px) vw(250px);
+        display: grid;
+        grid-auto-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+                "title buttons"
+                "slider slider";
+        gap: vw(40px);
+        overflow: hidden;
+        z-index: 2;
+
+        @include HD {
+            padding: vwh(80px) 0 vwh(80px) vwh(45px);
+            gap: vwh(40px);
+        }
+        @include Tablet {
+            padding: vwt(40px) 0 vwt(40px) vwt(12px);
+            gap: vwt(32px);
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                        'title'
+                        'slider';
+        }
+        @include Mobile {
+            padding: vwm(40px) 0 vwm(40px) vwm(12px);
+            gap: vwm(32px);
+        }
+    }
+
+    &__title {
+        grid-area: title;
+    }
+
+    &__buttons {
+        padding-right: vw(250px);
+        display: flex;
+        gap: vw(12px);
+        justify-self: end;
+        align-items: center;
+        grid-area: buttons;
+
+        @include HD {
+            padding-right: vwh(45px);
+            gap: vwh(12px);
+        }
+        @include Tablet {
+            display: none;
+            padding-right: vwt(12px);
+            width: 100%;
+            justify-self: start;
+            gap: 0;
+        }
+        @include Mobile {
+            padding-right: vwm(12px);
+        }
+    }
+
+    &__button-link {
+        @include Tablet {
+            display: none;
+            width: 100%;
+
+            background: var(--gray-lighter);
+            color: var(--gray-darker);
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--color1-lighter);
+                    color: var(--gray-darker);
+                }
+            }
+
+            &:active {
+                background: var(--color1-light) !important;
+                color: var(--gray-darker) !important;
+            }
+        }
+    }
+
+    &__slider-wrap {
+        grid-area: slider;
+        position: relative;
+        overflow: hidden;
+        height: fit-content;
+        padding: vw(60px) 0;
+
+        @include HD {
+            padding: vwh(60px) 0;
+        }
+        @include Tablet {
+            padding: vwt(32px) 0;
+        }
+        @include Mobile {
+            padding: vwm(32px) 0;
+        }
+    }
+
+    &__slider {
+        overflow: hidden;
+        @include mq(border-top-left-radius, 12px);
+        @include mq(border-bottom-left-radius, 12px);
+    }
+
+    &__slider-background {
+        position: absolute;
+        background: var(--bg-light);
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        @include mq(height, 260px, 234px, 168px, 168px);
+        @include mq(bottom, 80px, 80px, 40px, 40px);
+    }
+
+    &__button-prev,
+    &__button-next {
+        @include Tablet {
+            display: none;
+        }
+    }
+}

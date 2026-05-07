@@ -1,0 +1,181 @@
+.service-gallery {
+    @include mq(padding-block, 80px, 80px, 40px, 40px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include mq(gap, 40px, 40px, 32px, 32px);
+
+    }
+
+    &__image-container {
+        display: grid;
+        grid-template-areas:
+                'slider thumbs'
+                'pag pag';
+        grid-auto-rows: auto;
+        gap: vw(12px) vw(20px);
+        @include mq(height, 716px, 646px, 670px, 348px);
+
+        @include HD {
+            gap: vwh(12px) vwh(20px);
+        }
+        @include Tablet {
+            grid-template-areas:
+                'slider'
+                'pag'
+                'thumbs';
+            grid-auto-rows: min-content;
+            gap: vwt(12px);
+        }
+        @include Mobile {
+            gap: vwm(12px);
+        }
+    }
+
+    &__slider {
+        grid-area: slider;
+        position: relative;
+        overflow: hidden;
+        @include border-r(28px, 28px, 20px, 20px);
+    }
+
+    &__slide {
+
+        @include Tablet {
+            height: vwt(492px);
+        }
+        @include Mobile {
+            height: vwm(240px);
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__slider-button {
+        &--prev {
+            position: absolute;
+            z-index: 3;
+            top: 45%;
+            @include mq(left, 12px)
+        }
+
+        &--next {
+            position: absolute;
+            z-index: 3;
+            top: 45%;
+            @include mq(right, 12px)
+        }
+    }
+
+    &__thumbs {
+        grid-area: thumbs;
+        display: flex;
+        flex-shrink: 0;
+        width: vw(340px);
+        overflow: hidden;
+        @include border-r(20px, 20px, 12px, 12px);
+
+        @include HD {
+            width: vwh(304px);
+        }
+        @include Tablet {
+            width: 100%;
+        }
+    }
+
+    &__thumb-slide {
+        width: 100%;
+        border: solid transparent;
+        cursor: pointer;
+        user-select: none;
+        opacity: .5;
+        background: var(--gray-lighter);
+        @include border-w(2px);
+        @include border-r(20px, 20px, 12px, 12px);
+        @include transition((border-color, opacity, transform));
+
+        @include Tablet {
+            height: vwt(154px);
+        }
+        @include Mobile {
+            height: vwm(84px);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                opacity: .7;
+            }
+        }
+
+        &:active {
+            opacity: .7;
+            transform: scale(.97);
+        }
+
+        &.swiper-slide-thumb-active {
+            opacity: 1;
+            pointer-events: none;
+            border-color: var(--color1-main);
+        }
+    }
+
+    &__slider-pagination {
+        grid-area: pag;
+        display: flex;
+        height: fit-content !important;
+        width: fit-content !important;
+        margin-inline: auto;
+        overflow: hidden;
+
+        .swiper-pagination-bullet {
+            height: vw(8px);
+            width: vw(20px);
+            padding: vw(4px);
+            background: var(--gray-light) !important;
+            transition: width 1s var(--ease-spring), background 0.4s var(--cubic-bezier);
+            opacity: 1 !important;
+            @include border-r(8px);
+
+            @include HD {
+                height: vwh(8px);
+                width: vwh(20px);
+                padding: vwh(4px);
+            }
+            @include Tablet {
+                height: vwt(4px);
+                width: vwt(8px);
+                padding: vwt(2px);
+            }
+            @include Mobile {
+                height: vwm(4px);
+                width: vwm(8px);
+                padding: vwm(2px);
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--gray-medium) !important;
+                }
+            }
+
+            &-active {
+                width: vw(40px);
+                background: var(--gray-medium) !important;
+
+                @include HD {
+                    width: vwh(40px);
+                }
+                @include Tablet {
+                    width: vwt(16px);
+                }
+                @include Mobile {
+                    width: vwm(16px);
+                }
+            }
+        }
+    }
+}

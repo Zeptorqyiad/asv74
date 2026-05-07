@@ -1,0 +1,139 @@
+.product-buy-block {
+    display: flex;
+    flex-direction: column;
+    min-width: vw(304px);
+    padding: vw(20px) vw(20px) vw(12px) vw(20px);
+    background: var(--gray-lighter);
+    @include border-r(12px);
+    @include gap(12px);
+
+    @include HD {
+        min-width: vwh(304px);
+        padding: vwh(20px) vwh(20px) vwh(12px) vwh(20px);
+    }
+    @include Tablet {
+        min-width: vwt(304px);
+        padding: vwt(20px) vwt(20px) vwt(12px) vwt(20px);
+    }
+    @include Mobile {
+        min-width: vwm(304px);
+        padding: vwm(20px) vwm(20px) vwm(12px) vwm(20px);
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: vw(12px);
+        border-bottom: solid var(--gray-white);
+        @include gap(4px);
+        @include border-w(2px);
+
+        @include HD {
+            padding-bottom: vwh(12px);
+        }
+        @include Tablet {
+            padding-bottom: vwt(12px);
+        }
+        @include Mobile {
+            padding-bottom: vwm(12px);
+        }
+    }
+
+    &__sku {
+        color: var(--gray-medium);
+        @include t3;
+        font-weight: 600;
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__prices {
+        display: flex;
+        flex-direction: column;
+
+        @include Tablet {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            @include gap(8px);
+        }
+    }
+
+    &__price {
+
+        &--request {
+            color: var(--color1-light);
+            @include h5;
+        }
+
+        &--current {
+            color: var(--gray-darker);
+            @include h5;
+        }
+
+        &--old {
+            color: var(--color1-dark);
+            text-decoration: line-through solid currentColor;
+            @include t3;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        @include gap(12px);
+    }
+
+    &__button-order {
+
+    }
+
+    &__button-leasing {
+
+    }
+
+    &__button-about {
+
+    }
+
+    &__social {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @include spacing(gap, 8px);
+
+        &--tg svg {
+            color: var(--socials-tg);
+        }
+
+        &--wt svg {
+            color: var(--socials-wt);
+        }
+
+        &--max {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            @include icon(24px);
+            @include t2-b;
+            @include border-r(8px);
+            @include transition((background));
+            background: var(--gray-lighter);
+            color: var(--gray-darker);
+            @include spacing(height, 48px);
+            @include spacing(min-height, 48px);
+            @include spacing(gap, 8px);
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--color1-lighter);
+                }
+            }
+
+            &:active {
+                background: var(--color1-light);
+            }
+        }
+    }
+}

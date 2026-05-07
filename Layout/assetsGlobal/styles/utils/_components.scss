@@ -1,0 +1,171 @@
+.product-layout {
+    position: relative;
+    display: flex;
+    gap: vw(48px);
+    margin-top: vw(12px);
+
+    @include HD {
+        gap: vwh(48px);
+        margin-top: vwh(12px);
+    }
+    @include Tablet {
+        gap: 0;
+        margin-top: vwt(12px);
+    }
+    @include Mobile {
+        margin-top: vwm(12px);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__buy-block {
+        display: none !important;
+
+        @include Tablet {
+            margin-top: vwt(16px);
+            display: flex !important;
+        }
+        @include Mobile {
+            margin-top: vwm(16px);
+        }
+    }
+
+    &__manager-info {
+        display: none !important;
+
+        @include Tablet {
+            margin-top: vwt(16px);
+            display: grid !important;
+        }
+        @include Mobile {
+            margin-top: vwm(16px);
+        }
+    }
+
+    &__aside {
+        position: sticky;
+        top: vw(124px);
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        height: fit-content;
+        @include gap(16px);
+
+        @include HD {
+            top: vwh(124px);
+        }
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__group {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content 1fr;
+        margin-top: vw(20px);
+        @include transition((grid-template-rows), 0.3s);
+        @include border-r(2px);
+
+        @include HD {
+            margin-top: vwh(20px);
+        }
+        @include Tablet {
+            margin-top: vwt(20px);
+        }
+        @include Mobile {
+            margin-top: vwm(20px);
+        }
+
+        &--top {
+            margin-top: vw(24px);
+            padding-top: vw(24px);
+            border-top: solid var(--gray-lighter);
+            @include border-w(2px);
+
+            @include HD {
+                margin-top: vwh(24px);
+                padding-top: vwh(24px);
+            }
+            @include Tablet {
+                margin-top: vwt(24px);
+                padding-top: vwt(24px);
+            }
+            @include Mobile {
+                margin-top: vwm(24px);
+                padding-top: vwm(24px);
+            }
+        }
+
+        &.collapsed {
+            grid-template-rows: min-content 0fr;
+
+            .product-layout__group-top svg {
+                transform: rotateX(180deg);
+            }
+
+            .product-layout__group-body {
+                opacity: 0;
+            }
+        }
+
+        &-top {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: vw(20px);
+            width: 100%;
+            background: var(--gray-lighter);
+            color: var(--gray-black);
+            border: solid transparent;
+            @include border-r(12px);
+            @include border-w(1px);
+            @include transition((background, color, border-color));
+
+            @include HD {
+                padding: vwh(20px);
+            }
+            @include Tablet {
+                padding: vwt(16px) vwt(12px);
+            }
+            @include Mobile {
+                padding: vwm(16px) vwm(12px);
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    color: var(--color1-main);
+                    border-color: var(--gray-light);
+                }
+            }
+
+            &:active {
+                color: var(--color1-main);
+                background: var(--gray-light);
+                border-color: var(--gray-light);
+            }
+
+            h3 {
+
+                @include h4;
+            }
+
+            svg {
+                flex-shrink: 0;
+                @include icon(24px);
+                @include transition((transform));
+            }
+        }
+
+        &-body {
+            overflow: hidden;
+            opacity: 1;
+            @include transition((opacity), 0.4s);
+        }
+    }
+}

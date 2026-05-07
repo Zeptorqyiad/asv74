@@ -1,0 +1,1 @@
+<?php App\Layout\Components\Common\Header\Layout::draw(); ?>

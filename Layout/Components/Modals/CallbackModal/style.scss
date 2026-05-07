@@ -1,0 +1,155 @@
+.callback-modal {
+    width: 100%;
+    max-width: vw(560px);
+    padding: vw(32px);
+    height: auto;
+    max-height: 100dvh;
+    @include border-r(28px, 28px, 0, 0);
+    @include hide-scrollbar;
+
+    @include HD {
+        max-width: vwh(500px);
+        padding: vwh(32px);
+    }
+    @include Tablet {
+        max-width: 100%;
+        height: 100%;
+        padding: vwt(8px) vwt(12px) vwt(12px);
+    }
+    @include Mobile {
+        height: 100%;
+        padding: vwm(8px) vwm(12px) vwm(12px);
+    }
+
+    &__container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        @include gap(20px);
+    }
+
+    &__button-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &__top {
+        display: flex;
+        flex-direction: column;
+        @include gap(12px);
+
+        @include Tablet {
+            padding-top: vwt(20px);
+            margin-top: vwt(58px);
+            border-top: solid var(--gray-lighter);
+            @include border-w(2px);
+        }
+        @include Mobile {
+            padding-top: vwm(20px);
+            margin-top: vwm(58px);
+        }
+    }
+
+    &__title {
+        max-width: vw(438px);
+        color: var(--gray-darker);
+        @include h4;
+
+        @include HD {
+            max-width: vwh(436px);
+        }
+
+        @include Tablet {
+            max-width: unset;
+        }
+
+        span {
+            color: var(--color1-dark);
+        }
+    }
+
+    &__contacts {
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid var(--gray-lighter);
+        @include spacing(gap, 8px);
+        @include spacing(padding-top, 8px);
+        @include spacing(padding-bottom, 20px);
+        @include spacing(margin-bottom, 8px);
+        @include border-w(2px);
+    }
+
+    &__social {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @include spacing(gap, 8px);
+
+        &--tg svg {
+            color: var(--socials-tg);
+        }
+
+        &--wt svg {
+            color: var(--socials-wt);
+        }
+
+        &--max {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            @include spacing(gap, 8px);
+            width: 100%;
+            @include spacing(padding-block, 12px);
+            @include spacing(padding-inline, 20px);
+            background: var(--gray-lighter);
+            color: var(--gray-darker);
+            @include t2-b;
+            @include border-r(8px);
+            justify-content: center;
+            @include transition((background));
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--color1-lighter);
+                }
+            }
+
+            &:active {
+                background: var(--color1-light);
+            }
+        }
+
+        &-item {
+            & .callback-modal__social--max {
+                @include spacing(height, 48px);
+                @include spacing(max-height, 48px);
+            }
+        }
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        max-width: 39ch;
+        @include t2;
+
+        @include Tablet {
+            max-width: unset;
+        }
+    }
+
+    &__body {
+        display: flex;
+        overflow: hidden auto;
+        flex: 1 1 auto;
+        @include border-r(4px);
+
+        @include Tablet {
+            padding-bottom: vwt(130px);
+        }
+
+        @include Mobile {
+            padding-bottom: vwm(160px);
+        }
+    }
+}

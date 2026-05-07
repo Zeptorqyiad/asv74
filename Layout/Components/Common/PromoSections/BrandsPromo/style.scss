@@ -1,0 +1,81 @@
+.brands-promo {
+    padding: vw(80px) 0;
+    background: var(--bg-light);
+
+    @include HD {
+        padding: vwh(80px) 0;
+    }
+    @include Tablet {
+        padding: vwt(40px) 0;
+    }
+    @include Mobile {
+        padding: vwm(40px) 0;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: vw(60px);
+
+        @include HD {
+            gap: vwh(60px);
+        }
+        @include Tablet {
+            grid-template-columns: 1fr;
+            gap: vwt(24px);
+        }
+        @include Mobile {
+            gap: vwm(24px);
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        padding-right: vw(60px);
+        border-right: solid var(--gray-white);
+        @include gap(20px);
+
+        @include HD {
+            padding-right: vwh(60px);
+        }
+        @include Tablet {
+            border-right: none;
+            padding-right: 0;
+            padding-bottom: vwt(24px);
+            border-bottom: solid var(--gray-white);
+        }
+        @include Mobile {
+            padding-bottom: vwm(24px);
+        }
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        max-width: 48ch;
+        @include t2;
+
+        @include Tablet {
+            max-width: 38ch;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        height: fit-content;
+        gap: vw(20px);
+
+        @include HD {
+            gap: vwh(20px);
+        }
+        @include Tablet {
+            gap: vwt(16px);
+        }
+        @include Mobile {
+            gap: vwm(12px);
+        }
+    }
+}

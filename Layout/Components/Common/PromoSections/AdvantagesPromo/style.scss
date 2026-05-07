@@ -1,0 +1,103 @@
+.advantages-promo {
+    display: flex;
+    flex-direction: column;
+    gap: vw(60px);
+    padding-block: vw(80px);
+
+    @include HD {
+        gap: vwh(40px);
+        padding-block: vwh(80px);
+    }
+    @include Tablet {
+        gap: vwt(32px);
+        padding-block: vwt(40px);
+    }
+    @include Mobile {
+        gap: vwm(32px);
+        padding-block: vwm(40px);
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: vw(20px);
+        padding-block: vw(60px);
+        background: var(--bg-light);
+
+        @include HD {
+            gap: vwh(40px);
+            padding-block: vwh(40px);
+        }
+        @include Tablet {
+            grid-template-columns: repeat(2, 1fr);
+            gap: vwt(40px) vwt(16px);
+            padding-block: vwt(20px);
+        }
+        @include Mobile {
+            grid-template-columns: 1fr;
+            gap: vwm(28px);
+            padding-block: vwm(32px);
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        margin-inline-end: vw(40px);
+        @include gap(12px);
+
+        @include HD {
+            margin-inline-end: vwh(40px);
+        }
+        @include Tablet {
+            margin-inline-end: vwt(20px);
+        }
+        @include Mobile {
+            margin-inline-end: vwm(20px);
+        }
+
+        &-marker {
+            background: var(--gray-white) !important;
+            color: var(--color1-main) !important;
+        }
+
+        &-icon {
+            width: vw(56px);
+            height: vw(56px);
+
+            @include HD {
+                width: vwh(56px);
+                height: vwh(56px);
+            }
+            @include Tablet {
+                width: vwt(40px);
+                height: vwt(40px);
+            }
+            @include Mobile {
+                width: vwm(40px);
+                height: vwm(40px);
+            }
+        }
+
+        &-separator {
+            background: var(--gray-light) !important;
+        }
+
+        &-text {
+            display: flex;
+            flex-direction: column;
+            @include gap(12px);
+        }
+
+        &-title {
+            color: var(--gray-darker);
+            @include h5;
+        }
+
+        &-desc {
+            color: var(--gray-dark);
+            @include t2;
+        }
+    }
+}

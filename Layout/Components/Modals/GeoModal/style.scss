@@ -1,0 +1,202 @@
+.geo-modal {
+    padding: vw(20px);
+    left: vw(250px);
+    top: vw(56px);
+    max-width: vw(400px);
+    width: 100%;
+    transform: translate(0) translateZ(0);
+    @include border-r(20px, 20px, 0, 0);
+
+    @include HD {
+        left: vwh(45px);
+        top: vwh(56px);
+        padding: vwh(20px);
+        max-width: vwh(400px);
+    }
+    @include Tablet {
+        inset: 0;
+        padding: vwt(8px);
+        max-width: unset;
+        transform: translate(0, 100%) translateZ(0);
+    }
+    @include Mobile {
+        padding: vwm(8px);
+    }
+
+    &.active {
+        transform: translate(0) translateZ(0);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        background: inherit;
+        top: -5px;
+        left: 10%;
+        transform: rotate(45deg);
+        @include border-r(3px);
+        @include icon(16px);
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+
+        @include Tablet {
+            height: 100%;
+        }
+    }
+
+    &__top {
+        display: none;
+        flex-shrink: 0;
+        justify-content: flex-end;
+        border-bottom: solid var(--gray-light);
+        @include border-w(2px);
+        @include mq(margin-bottom, 20px);
+        @include mq(padding-bottom, 8px);
+
+        @include Tablet {
+            display: flex;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h5;
+
+        span {
+            color: var(--color1-dark);
+        }
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        @include gap(20px);
+
+        @include Tablet {
+            margin-inline: vwt(8px);
+            padding-bottom: vwt(64px);
+            height: 100%;
+            justify-content: space-between;
+        }
+        @include Mobile {
+            margin-inline: vwm(8px);
+            padding-bottom: vwm(64px);
+        }
+
+        &-body {
+            display: flex;
+            flex-direction: column;
+            @include gap(20px);
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        @include gap(12px);
+
+        @include Tablet {
+            flex-direction: column;
+        }
+    }
+
+    &__dropdown {
+        position: relative;
+
+        &-list {
+            position: absolute;
+            display: flex;
+            width: 100%;
+            max-height: 30dvh;
+            flex-direction: column;
+            padding: vw(8px);
+            background: var(--gray-white);
+            opacity: 0;
+            box-shadow: var(--shadow-medium);
+            user-select: none;
+            pointer-events: none;
+            overflow: hidden scroll;
+            overscroll-behavior: contain;
+            @include hide-scrollbar;
+            @include transition(opacity);
+            @include border-r(16px);
+            @include gap(8px);
+
+            @include HD {
+                padding: vwh(8px);
+            }
+            @include Tablet {
+                padding: vwt(8px);
+            }
+            @include Mobile {
+                padding: vwm(8px);
+            }
+
+            &.active {
+                opacity: 1;
+                user-select: auto;
+                pointer-events: auto;
+            }
+        }
+
+        &-item {
+            padding: vw(10px) vw(12px);
+            width: 100%;
+            color: var(--gray-darker);
+            background: var(--gray-lighter);
+            cursor: pointer;
+            @include t3;
+            @include border-r(8px);
+            @include transition((background, color));
+
+            @include HD {
+                padding: vwh(10px) vwh(12px);
+            }
+            @include Tablet {
+                padding: vwt(10px) vwt(12px);
+            }
+            @include Mobile {
+                padding: vwm(10px) vwm(12px);
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    color: var(--color1-main);
+                }
+            }
+
+            &:active {
+                color: var(--color1-dark);
+                background: var(--color1-lighter);
+            }
+
+            &--no-results {
+                color: var(--gray-medium);
+                padding: vw(4px);
+                @include t2;
+
+                @include HD {
+                    padding: vwh(4px);
+                }
+                @include Tablet {
+                    padding: vwt(4px);
+                }
+                @include Mobile {
+                    padding: vwm(4px);
+                }
+            }
+        }
+    }
+}

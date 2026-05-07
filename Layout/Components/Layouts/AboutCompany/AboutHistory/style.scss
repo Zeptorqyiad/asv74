@@ -1,0 +1,58 @@
+.about-history {
+    display: grid;
+    grid-template-areas:
+            'title controls'
+            'slider slider';
+    justify-content: space-between;
+    @include mq(padding-block, 80px, 80px, 40px, 40px);
+    @include mq(gap, 60px, 60px, 32px, 32px);
+
+    @include Tablet {
+        grid-template-areas:
+            'title'
+            'slider'
+            'controls';
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        grid-area: title;
+        @include mq(margin-left, 250px, 45px, 12px, 12px);
+    }
+
+    &__controls {
+        grid-area: controls;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        @include gap(12px);
+        @include mq(margin-right, 250px, 45px, 0, 0);
+
+        @include Tablet {
+            margin-inline: auto;
+        }
+
+    }
+
+    &__body {
+        grid-area: slider;
+        overflow: scroll hidden;
+        -webkit-overflow-scrolling: touch;
+        @include mq(margin-left, 250px, 45px, 12px, 12px);
+        @include mq(border-top-left-radius, 20px, 20px, 12px, 12px);
+        @include mq(border-bottom-left-radius, 20px, 20px, 12px, 12px);
+        @include hide-scrollbar;
+    }
+
+    &__body-wrap {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        @include mq(gap, 20px, 20px, 16px, 12px);
+    }
+}

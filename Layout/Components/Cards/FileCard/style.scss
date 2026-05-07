@@ -1,0 +1,108 @@
+.file-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: var(--gray-lighter);
+    padding: vw(4px);
+    @include border-r(8px);
+    @include transition((background));
+
+    @include HD {
+        padding: vwh(4px);
+    }
+    @include Tablet {
+        padding: vwt(4px);
+    }
+    @include Mobile {
+        padding: vwm(4px);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+               .file-card__name {
+                   color: var(--color1-main);
+               }
+        }
+    }
+
+    &:active {
+        background: var(--color1-lighter);
+
+        .file-card__name {
+            color: var(--color1-darker);
+        }
+    }
+
+    &__marker {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        height: vw(56px);
+        width: vw(56px);
+        background: var(--color1-lighter);
+        color: var(--color1-light);
+        @include border-r(8px);
+
+        @include HD {
+            height: vwh(56px);
+            width: vwh(56px);
+        }
+        @include Tablet {
+            height: vwt(40px);
+            width: vwt(40px);
+        }
+        @include Mobile {
+            height: vwm(40px);
+            width: vwm(40px);
+        }
+
+        svg {
+            flex-shrink: 0;
+            @include icon(24px);
+        }
+    }
+
+    &__name {
+        margin-left: vw(20px);
+        color: var(--gray-darker);
+        @include t2-b;
+        @include truncate(1);
+        @include transition((color));
+
+        @include HD {
+            margin-left: vwh(20px);
+        }
+        @include Tablet {
+            margin-left: vwt(12px);
+            @include truncate(2);
+        }
+        @include Mobile {
+            margin-left: vwm(12px);
+        }
+    }
+
+    &__size {
+        flex-shrink: 0;
+        padding-inline: vw(4px);
+        margin: vw(4px) vw(4px) vw(4px) auto;
+        color: var(--gray-white);
+        background: var(--gray-dark);
+        white-space: nowrap;
+        @include t4;
+        @include border-r(12px);
+
+        @include HD {
+            padding-inline: vwh(4px);
+            margin: vwh(4px) vwh(4px) vwh(4px) auto;
+        }
+        @include Tablet {
+            padding-inline: vwt(4px);
+            margin: vwt(4px) vwt(4px) vwt(4px) auto;
+        }
+        @include Mobile {
+            padding-inline: vwm(4px);
+            margin: vwm(4px) vwm(4px) vwm(4px) auto;
+        }
+    }
+}

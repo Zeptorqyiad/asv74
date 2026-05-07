@@ -1,0 +1,27 @@
+.about-team {
+    @include mq(padding-block-start, 120px, 120px, 60px, 60px);
+    @include mq(padding-block-end, 80px, 80px, 40px, 40px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include mq(gap, 60px, 60px, 32px, 32px);
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: min-content;
+        @include mq(gap, 20px, 20px, 16px, 16px);
+
+        @include HD {
+
+        }
+        @include Tablet {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @include Mobile {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}

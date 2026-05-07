@@ -1,0 +1,36 @@
+.comp-badges-cell {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @include gap(4px);
+
+    &__badge {
+
+        @include Tablet {
+            height: vwt(24px) !important;
+            padding: 0 vwt(8px) !important;
+            border-radius: vwt(12px) !important;
+        }
+        @include Mobile {
+            height: vwm(24px) !important;
+            padding: 0 vwm(8px) !important;
+            border-radius: vwm(12px) !important;
+        }
+
+        &--to-order {
+            color: var(--uniq-blue) !important;
+        }
+
+        &--is-new {
+            color: var(--uniq-yellow) !important;
+        }
+
+        &--in-stock {
+            color: var(--uniq-green) !important;
+        }
+
+        &--sale {
+            color: var(--uniq-red) !important;
+        }
+    }
+}

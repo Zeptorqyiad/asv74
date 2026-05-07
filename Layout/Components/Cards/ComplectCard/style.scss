@@ -1,0 +1,443 @@
+.complect-card {
+    position: relative;
+    cursor: pointer;
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .complect-card__container {
+                background: var(--gray-lighter);
+            }
+
+            .complect-card__title {
+                color: var(--color1-main);
+            }
+
+            .complect-card__image-gallery img {
+                transform: scale(1.1);
+            }
+
+            @include Tablet {
+                .complect-card__container {
+                    background: var(--gray-white);
+                }
+            }
+        }
+    }
+
+    &:active {
+        .complect-card__title {
+            color: var(--color1-darker);
+        }
+
+        .complect-card__image-gallery img {
+            transform: scale(1);
+        }
+    }
+
+    &__link {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    &__container {
+        display: flex;
+        padding: vw(16px);
+        background: var(--gray-white);
+        @include transition((background));
+        @include border-r(20px);
+        @include spacing(gap, 20px);
+
+        @include HD {
+            padding: vwh(16px);
+        }
+
+        @include Tablet {
+            flex-direction: column;
+            align-items: unset;
+            justify-content: unset;
+            padding: 0;
+        }
+    }
+
+    &__status-badges {
+        position: relative;
+        grid-area: badges;
+        justify-self: self-start;
+        display: flex;
+        height: fit-content;
+        flex-direction: row;
+        flex-wrap: wrap;
+        z-index: 2;
+        pointer-events: none;
+        @include gap(8px);
+    }
+
+    &__badge {
+        height: vw(24px) !important;
+        border-radius: vw(12px) !important;
+
+        @include HD {
+            height: vwh(24px) !important;
+            border-radius: vwh(12px) !important;
+        }
+        @include Tablet {
+            height: vwt(24px) !important;
+            border-radius: vwt(12px) !important;
+        }
+        @include Mobile {
+            height: vwm(24px) !important;
+            border-radius: vwm(12px) !important;
+        }
+
+        &--to-order {
+            color: var(--uniq-blue) !important;
+        }
+
+        &--is-new {
+            color: var(--uniq-yellow) !important;
+        }
+
+        &--in-stock {
+            color: var(--uniq-green) !important;
+        }
+
+        &--sale {
+            color: var(--uniq-red) !important;
+        }
+    }
+
+    &__media {
+        position: relative;
+        flex-shrink: 0;
+        width: vw(340px);
+        height: vw(214px);
+
+        @include HD {
+            width: vwh(340px);
+            height: vwh(214px);
+        }
+
+        @include Tablet {
+            max-width: vwt(364px);
+            height: vwt(192px);
+            width: 100%;
+        }
+
+        @include Mobile {
+            max-width: vwm(342px);
+            height: vwm(192px);
+        }
+    }
+
+    &__media-wrapper {
+        position: relative;
+        display: grid;
+        grid-template-columns: auto min-content;
+        grid-template-areas:
+            'badges compare'
+            'spec spec';
+        height: 100%;
+        width: 100%;
+        padding: vw(12px);
+        @include gap(8px);
+
+        @include HD {
+            padding: vwh(12px);
+        }
+        @include Tablet {
+            padding: vwt(8px);
+        }
+        @include Mobile {
+            padding: vwm(8px);
+        }
+    }
+
+    &__image-container {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        @include gap(4px);
+    }
+
+    &__image-gallery {
+        flex-shrink: 0;
+        overflow: hidden;
+        z-index: 1;
+        @include border-r(12px);
+
+        img {
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            @include transition((transform));
+        }
+    }
+
+    &__images-aside {
+        flex-shrink: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        width: vw(84px);
+        @include gap(4px);
+
+        @include HD {
+            grid-template-rows: repeat(3, 1fr);
+            width: vwh(84px);
+        }
+        @include Tablet {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            @include border-r(12px);
+
+            &:nth-child(n+5) {
+                display: none;
+            }
+
+            @include HD {
+                &:nth-child(n+4) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &__pagination {
+        position: absolute;
+        top: unset !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        display: flex;
+        height: fit-content !important;
+        width: fit-content !important;
+        margin-inline: auto;
+        overflow: hidden;
+        margin-block: vw(8px);
+        z-index: 2;
+
+        @include HD {
+            margin-block: vwh(8px);
+        }
+        @include Tablet {
+            margin-block: vwt(8px);
+        }
+        @include Mobile {
+            margin-block: vwm(8px);
+        }
+
+        .swiper-pagination-bullet {
+            height: vw(4px);
+            width: vw(8px);
+            padding: vw(2px);
+            margin: 0 vw(2px) !important;
+            background: var(--gray-medium) !important;
+            transition: width 1s var(--ease-spring), background 0.4s var(--cubic-bezier);
+            transform-origin: center !important;
+            opacity: 1 !important;
+            @include border-r(8px);
+
+            @include HD {
+                height: vwh(4px);
+                width: vwh(8px);
+                padding: vwh(2px);
+                margin: 0 vwh(2px) !important;
+            }
+            @include Tablet {
+                height: vwt(4px);
+                width: vwt(8px);
+                padding: vwt(2px);
+                margin: 0 vwt(2px) !important;
+            }
+            @include Mobile {
+                height: vwm(4px);
+                width: vwm(8px);
+                padding: vwm(2px);
+                margin: 0 vwm(2px) !important;
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--gray-dark) !important;
+                }
+            }
+
+            &-active {
+                width: vw(16px);
+                background: var(--gray-dark) !important;
+
+                @include HD {
+                    width: vwh(16px);
+                }
+                @include Tablet {
+                    width: vwt(16px);
+                }
+                @include Mobile {
+                    width: vwm(16px);
+                }
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: vw(8px) 0;
+        @include spacing(gap, 12px);
+
+        @include HD {
+            padding: vwh(8px) 0;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        @include gap(12px);
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h5;
+        @include transition((color));
+        @include truncate(2);
+    }
+
+    &__sku {
+        color: var(--gray-medium);
+        @include t2;
+        @include truncate(1);
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        @include t3;
+        @include truncate(3);
+
+        @include Tablet {
+            @include truncate(2);
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        @include gap(12px);
+    }
+
+    &__action-buttons {
+        display: inline-flex;
+        @include gap(8px);
+    }
+
+    &__prices {
+        display: inline-flex;
+        align-items: center;
+        @include gap(8px);
+    }
+
+    &__price {
+        &--request {
+            color: var(--gray-medium);
+            @include h6;
+        }
+
+        &--current {
+            color: var(--gray-darker);
+            @include h5;
+        }
+
+        &--old {
+            color: var(--color1-dark);
+            text-decoration: line-through solid currentColor;
+            @include t3;
+        }
+    }
+
+    &__button-compare {
+        position: relative;
+        grid-area: compare;
+        justify-self: self-end;
+        z-index: 3;
+    }
+
+    &__button-specification {
+        position: relative;
+        grid-area: spec;
+        align-self: self-end;
+        justify-self: self-start;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: var(--gray-darker);
+        background: var(--gray-lighter);
+        height: vw(32px);
+        padding-inline: vw(12px);
+        z-index: 2;
+        @include border-r(8px);
+        @include gap(4px);
+        @include transition((color, background));
+
+        @include HD {
+            height: vwh(32px);
+            padding-inline: vwh(12px);
+        }
+        @include Tablet {
+            height: vwt(24px);
+            padding-inline: vwt(8px);
+        }
+        @include Mobile {
+            height: vwm(24px);
+            padding-inline: vwm(8px);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: var(--color1-main);
+                background: var(--color1-lighter);
+            }
+        }
+
+        &:active {
+            color: var(--color1-darker);
+            background: var(--color1-light);
+
+            svg {
+                transform: translateX(20%);
+            }
+        }
+
+
+        span {
+            @include t3;
+
+            @include Tablet {
+                @include t4;
+            }
+        }
+
+        svg {
+            flex-shrink: 0;
+            @include icon(16px);
+            @include transition((transform));
+        }
+    }
+
+    &__button-order {
+        position: relative;
+        z-index: 2;
+    }
+}

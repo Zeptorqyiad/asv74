@@ -1,0 +1,119 @@
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    will-change: transform, opacity;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    z-index: 99;
+    @include transition((opacity), 0.4s);
+
+    @include Tablet {
+        display: none;
+    }
+
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+        user-select: auto;
+    }
+}
+
+.search-form {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr min-content;
+    width: 100%;
+    z-index: z('modal');
+    @include gap(12px);
+
+    &__input-search {
+
+    }
+
+    &__button-submit {
+
+    }
+
+    &__results {
+        position: absolute;
+        background: var(--gray-white);
+        overflow: hidden;
+        width: 100%;
+        opacity: 0;
+        user-select: none;
+        pointer-events: none;
+        box-shadow: var(--shadow-medium);
+        @include border-r(8px);
+        @include transition((opacity));
+        @include mq(top, 60px, 56px);
+
+        &.active {
+            opacity: 1;
+            user-select: auto;
+            pointer-events: auto;
+        }
+
+        &-wrap {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden auto;
+            max-height: 50dvh;
+            @include mq(padding, 12px);
+            @include gap(12px);
+        }
+    }
+
+    &__info-text {
+        color: var(--gray-medium);
+        @include t2-b;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        @include gap(4px);
+
+        &-title {
+            color: var(--gray-medium);
+            @include h5;
+        }
+
+        &-wrap {
+            display: flex;
+            flex-direction: column;
+            @include gap(12px);
+
+            &:not(:first-of-type) {
+                border-top: solid var(--gray-lighter);
+                @include border-w(2px);
+                @include mq(padding-top, 12px);
+                @include mq(margin-top, 12px);
+            }
+        }
+    }
+
+    &__button {
+        justify-content: flex-start !important;
+        width: 100% !important;
+
+        &-count {
+
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        @include mq(padding, 12px);
+        @include mq(margin-top, 8px);
+
+        &-buttons {
+            display: flex;
+            flex-direction: column;
+            @include gap(4px);
+        }
+    }
+}

@@ -1,0 +1,121 @@
+.about-principles {
+    @include mq(padding-block, 80px, 80px, 40px, 40px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include mq(gap, 60px, 60px, 32px, 32px);
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas:
+                'large large wide wide'
+                'large large small small-img';
+        @include mq(gap, 20px, 20px, 16px, 16px);
+
+        @include Tablet {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: min-content;
+            grid-template-areas:
+                'large wide'
+                'small small-img';
+        }
+        @include Mobile {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                'large'
+                'wide'
+                'small'
+                'small-img';
+        }
+    }
+
+    &__card {
+        position: relative;
+        overflow: hidden;
+        background: var(--gray-dark);
+        @include border-r(20px, 20px, 12px, 12px);
+
+        @include Tablet {
+            min-height: vwt(220px);
+        }
+        @include Mobile {
+            min-height: vwm(220px);
+        }
+
+        &-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        &-content {
+            position: relative;
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 2;
+            @include mq(padding, 20px, 20px, 12px, 12px);
+            @include gap(28px);
+        }
+
+        &-marker {
+            background: var(--gray-white) !important;
+            color: var(--color1-main) !important;
+        }
+
+        &-text {
+            display: flex;
+            flex-direction: column;
+            @include gap(8px);
+        }
+
+        &-title {
+            color: var(--gray-white);
+            @include h4;
+        }
+
+        &-desc {
+            color: var(--gray-lighter);
+            @include t2;
+        }
+
+        &.large {
+            grid-area: large;
+
+            .about-principles__card-content {
+                @include mq(padding, 40px, 40px, 12px, 12px)
+            }
+        }
+
+        &.wide {
+            grid-area: wide;
+            background: var(--gray-lighter);
+
+            .about-principles__card-title {
+                color: var(--gray-darker);
+            }
+
+            .about-principles__card-desc {
+                color: var(--gray-dark);
+            }
+        }
+
+        &.small {
+            grid-area: small;
+            background: var(--color1-light);
+        }
+
+        &.small-img {
+            grid-area: small-img;
+        }
+
+    }
+}

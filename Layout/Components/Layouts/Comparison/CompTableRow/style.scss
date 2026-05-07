@@ -1,0 +1,38 @@
+.comp-table-row {
+    display: flex;
+    flex-direction: column;
+    padding: vw(8px) vw(12px);
+    background: var(--gray-lighter);
+    overflow: hidden;
+    @include gap(8px);
+    @include border-r(8px);
+
+    @include HD {
+        padding: vwh(8px) vwh(12px);
+    }
+    @include Tablet {
+        padding: vwt(8px) vwt(12px);
+    }
+    @include Mobile {
+        padding: vwm(8px) vwm(12px);
+    }
+
+    &:nth-of-type(even) {
+        background: transparent;
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include t2-b;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__column {
+        color: var(--gray-dark);
+        @include t3;
+    }
+}

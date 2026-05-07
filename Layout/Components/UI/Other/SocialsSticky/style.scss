@@ -1,0 +1,41 @@
+.socials-sticky {
+    position: fixed;
+    top: vw(134px);
+    right: vw(12px);
+    padding: vw(8px);
+    background: var(--gray-light);
+    z-index: 95;
+    @include border-r(12px, 8px, 8px, 8px);
+
+    @include HD {
+        top: vwh(142px);
+        right: vwh(8px);
+        padding: vwh(4px);
+    }
+    @include Tablet {
+        display: none;
+    }
+
+    &__container {
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        gap: vw(8px) !important;
+
+        @include HD {
+            gap: vwh(4px) !important;
+        }
+    }
+
+    .btn-social {
+        @include HD {
+            height: vwh(32px);
+            padding-inline: vwh(6px);
+        }
+
+        svg {
+            @include HD {
+                @include icon(16px)
+            }
+        }
+    }
+}

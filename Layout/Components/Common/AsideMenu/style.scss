@@ -1,0 +1,61 @@
+.aside-menu {
+    position: sticky;
+    top: vw(124px);
+    display: flex;
+    height: fit-content;
+    flex-shrink: 0;
+    background: var(--gray-white);
+    box-shadow: var(--shadow-near);
+    @include border-r(24px);
+    @include mq(min-width, 340px, 304px, 304px, 304px);
+
+    @include HD {
+        top: vwh(124px);
+    }
+    @include Tablet {
+        display: none;
+    }
+
+    &__container {
+        display: flex;
+        width: 100%;
+        @include mq(padding, 20px, 20px, 16px, 16px)
+    }
+
+    &__tabs {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        @include gap(8px);
+    }
+
+    &__tab {
+        width: 100%;
+        justify-content: space-between;
+
+        &.with-separator {
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                background: var(--gray-lighter);
+                height: max(#{vw(2px), 2px});
+                @include mq(top, -10px);
+
+                @include HD {
+                    height: max(#{vwh(2px), 2px});
+                }
+                @include Tablet {
+                    height: max(#{vwt(2px), 2px});
+                }
+                @include Mobile {
+                    height: max(#{vwm(2px), 2px});
+                }
+            }
+
+            position: relative;
+            @include mq(margin-top, 10px)
+        }
+    }
+}

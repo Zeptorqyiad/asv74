@@ -1,0 +1,368 @@
+.footer {
+    background: var(--gray-black);
+    padding-block: vw(80px);
+
+    @include HD {
+        padding-block-start: vwh(40px);
+        padding-block-end: vwh(80px);
+    }
+    @include Tablet {
+        padding-block-start: vwt(20px);
+        padding-block-end: vwt(120px);
+    }
+    @include Mobile {
+        padding-block-start: vwm(20px);
+        padding-block-end: vwm(120px);
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: vw(20px);
+
+        @include HD {
+            gap: vwh(20px);
+        }
+        @include Tablet {
+            gap: vwt(20px);
+        }
+        @include Mobile {
+            gap: vwm(20px);
+        }
+    }
+
+    &__top {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr auto;
+        gap: vw(20px);
+        margin-bottom: vw(20px);
+
+        @include HD {
+            gap: vwh(20px);
+            margin-bottom: vwh(40px);
+        }
+        @include Tablet {
+            grid-template-columns: 1fr 1fr;
+            gap: vwt(20px);
+            margin-bottom: vwt(32px);
+        }
+        @include Mobile {
+            grid-template-columns: 1fr;
+            gap: vwm(20px);
+            margin-bottom: vwm(12px);
+        }
+    }
+
+    &__logo-link {
+        margin-bottom: vw(12px);
+
+        @include HD {
+            margin-bottom: vwh(12px);
+        }
+        @include Tablet {
+            margin-bottom: vwt(12px);
+        }
+        @include Mobile {
+            margin-bottom: vwm(12px);
+        }
+    }
+
+    &__logo-icon {
+        width: vw(160px);
+        height: vw(40px);
+
+        @include HD {
+            width: vwh(160px);
+            height: vwh(40px);
+        }
+        @include Tablet {
+            width: vwt(160px);
+            height: vwt(40px);
+        }
+        @include Mobile {
+            width: vwm(160px);
+            height: vwm(40px);
+        }
+    }
+
+    &__column {
+        display: flex;
+        flex-direction: column;
+        padding-right: vw(20px);
+        border-right: solid var(--gray-darker);
+        @include border-w(2px);
+
+        @include HD {
+            padding-right: vwh(20px);
+        }
+        @include Tablet {
+            padding-right: vwt(43px);
+        }
+        @include Mobile {
+            padding-right: 0;
+            border: none;
+        }
+
+        &:last-of-type {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        &--main {
+            gap: vw(8px);
+
+            @include HD {
+                gap: vwh(8px);
+            }
+            @include Tablet {
+                gap: vwt(8px);
+            }
+            @include Mobile {
+                gap: vwm(8px);
+            }
+        }
+
+        &--nav {
+            display: flex;
+            flex-direction: column;
+
+            @include Tablet {
+                display: none;
+            }
+        }
+
+        &--info {
+            @include Mobile {
+                border-top: solid var(--gray-darker);
+                padding-top: vwm(20px);
+                @include border-r(2px);
+                @include border-w(2px);
+            }
+        }
+
+        &-title {
+            color: var(--gray-white);
+            padding-block: vw(12px);
+            @include t2-b;
+
+            @include HD {
+                padding-block: vwh(12px);
+            }
+            @include Tablet {
+                padding-block: vwt(12px);
+            }
+            @include Mobile {
+                padding-block: vwm(12px);
+            }
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+            @include gap(4px);
+        }
+
+        &-list-add {
+            display: none;
+            flex-direction: column;
+            margin-top: vw(12px);
+            padding-top: vw(12px);
+            border-top: solid var(--gray-darker);
+            @include gap(4px);
+            @include border-w(2px);
+
+            @include HD {
+                margin-top: vwh(12px);
+                padding-top: vwh(12px);
+            }
+            @include Tablet {
+                display: flex;
+                margin-top: vwt(12px);
+                padding-top: vwt(12px);
+            }
+            @include Mobile {
+                margin-top: vwm(12px);
+                padding-top: vwm(12px);
+            }
+        }
+
+        &-item {
+
+        }
+
+        &-link {
+            color: var(--gray-white);
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    color: var(--color1-light);
+                }
+            }
+
+            &:active {
+                color: var(--color1-main);
+            }
+
+            &:not(:has(.tab__icon)) .tab__text {
+                margin-inline: 0;
+            }
+        }
+    }
+
+    &__info {
+        &-list {
+            display: flex;
+            flex-direction: column;
+            gap: vw(12px);
+
+            @include HD {
+                gap: vwh(12px);
+            }
+            @include Tablet {
+                gap: vwt(12px);
+            }
+            @include Mobile {
+                gap: vwm(12px);
+            }
+        }
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            @include gap(4px);
+
+            &-subtitle {
+                color: var(--gray-lighter);
+                @include t4;
+            }
+
+            &-text {
+                color: var(--gray-lighter);
+                @include t3-b;
+            }
+
+            &-contact {
+
+            }
+
+            &-socials {
+                margin-top: vw(4px);
+
+                @include HD {
+                    margin-top: vwh(4px);
+                }
+                @include Tablet {
+                    margin-top: vwt(4px);
+                }
+                @include Mobile {
+                    margin-top: vwm(4px);
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: vw(40px);
+        border-top: solid var(--gray-darker);
+        @include border-w(2px);
+        @include gap(20px);
+
+        @include HD {
+            padding-top: vwh(60px);
+        }
+        @include Tablet {
+            flex-direction: column;
+            padding-top: vwt(32px);
+        }
+        @include Mobile {
+            padding-top: vwm(32px);
+        }
+    }
+
+    &__copyright {
+        display: flex;
+        flex-direction: column;
+        @include gap(4px);
+    }
+
+    &__company {
+        color: var(--gray-lighter);
+        @include t3-b;
+    }
+
+    &__inn {
+        color: var(--gray-lighter);
+        @include t3;
+    }
+
+    &__studio {
+        display: flex;
+        flex-direction: row;
+        margin-right: vw(46px);
+        gap: vw(40px);
+
+        @include HD {
+            margin-right: vwh(46px);
+            gap: vwh(40px);
+        }
+        @include Tablet {
+            margin-right: 0;
+            gap: vwt(40px);
+        }
+        @include Mobile {
+            flex-direction: column;
+            gap: vwm(20px);
+        }
+
+        a {
+            width: fit-content;
+        }
+    }
+
+    &__made-in {
+        width: vw(212px);
+        height: vw(40px);
+
+        @include HD {
+            width: vwh(212px);
+            height: vwh(40px);
+        }
+        @include Tablet {
+            width: vwt(212px);
+            height: vwt(40px);
+        }
+        @include Mobile {
+            width: vwm(212px);
+            height: vwm(40px);
+        }
+
+        a {
+            width: fit-content;
+        }
+    }
+
+    &__simflex {
+        width: vw(114px);
+        height: vw(40px);
+
+        @include HD {
+            width: vwh(114px);
+            height: vwh(40px);
+        }
+        @include Tablet {
+            width: vwt(114px);
+            height: vwt(40px);
+        }
+        @include Mobile {
+            width: vwm(114px);
+            height: vwm(40px);
+        }
+
+        a {
+            width: fit-content;
+        }
+    }
+}

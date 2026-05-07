@@ -1,0 +1,99 @@
+.post-content {
+    margin-inline: vw(610px);
+
+    @include HD {
+        margin-inline: vwh(369px);
+    }
+    @include Tablet {
+        margin-inline: vwt(144px);
+    }
+    @include Mobile {
+        margin-inline: vwm(12px);
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        margin-block: vw(20px);
+
+        @include HD {
+            margin-block: vwh(20px);
+        }
+        @include Tablet {
+            margin-block: vwt(12px);
+        }
+        @include Mobile {
+            margin-block: vwm(12px);
+        }
+    }
+
+    &__bottom {
+        display: grid;
+        grid-template-areas:
+                'views date'
+                'back share';
+        justify-content: space-between;
+        gap: vw(20px);
+        border-top: solid var(--gray-lighter);
+        padding-top: vw(40px);
+        @include border-w(2px);
+
+        @include HD {
+            gap: vwh(20px);
+            padding-top: vwh(40px);
+        }
+        @include Tablet {
+            gap: vwt(16px);
+            padding-top: vwt(32px);
+        }
+        @include Mobile {
+            grid-template-areas:
+                'views'
+                'date'
+                'back'
+                'share';
+            justify-content: normal;
+            gap: 0;
+            padding-top: vwm(32px);
+        }
+    }
+
+    &__views {
+        grid-area: views;
+        display: flex;
+        justify-self: flex-start;
+        color: var(--gray-medium);
+        @include t3;
+        @include gap(4px);
+    }
+
+    &__date {
+        grid-area: date;
+        justify-self: flex-end;
+        color: var(--gray-medium);
+        @include t3-b;
+
+        @include Mobile {
+            justify-self: flex-start;
+        }
+    }
+
+    &__button-back {
+        grid-area: back;
+
+        @include Mobile {
+            margin-top: vwm(16px);
+            justify-self: center;
+            width: 100% !important;
+        }
+    }
+
+    &__button-share {
+        grid-area: share;
+
+        @include Mobile {
+            margin-top: vwm(12px);
+            justify-self: center;
+        }
+    }
+}

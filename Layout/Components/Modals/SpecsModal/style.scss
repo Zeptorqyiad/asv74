@@ -1,0 +1,200 @@
+.specs-modal {
+    width: 100%;
+    max-width: vw(640px);
+    padding: vw(32px);
+    height: auto;
+    max-height: 100dvh;
+    @include border-r(28px, 28px, 0, 0);
+    @include hide-scrollbar;
+
+    @include HD {
+        max-width: vwh(640px);
+        padding: vwh(32px);
+    }
+    @include Tablet {
+        max-width: 100%;
+        height: 100%;
+        padding: vwt(8px) vwt(12px) vwt(12px);
+    }
+    @include Mobile {
+        height: 100%;
+        padding: vwm(8px) vwm(12px) vwm(12px);
+    }
+
+    &__container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        @include gap(20px);
+    }
+
+    &__button-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &__top {
+        display: flex;
+        flex-direction: column;
+        margin-top: vw(20px);
+        gap: vw(30px);
+
+        @include HD {
+            margin-top: vw(20px);
+            gap: vwh(30px);
+        }
+        @include Tablet {
+            max-width: unset;
+            padding-top: vwt(20px);
+            margin-top: vwt(58px);
+            border-top: solid var(--gray-lighter);
+            gap: vw(20px);
+            @include border-w(2px);
+        }
+        @include Mobile {
+            padding-top: vwm(20px);
+            margin-top: vwm(58px);
+            gap: vwm(20px);
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden auto;
+        flex: 1 1 auto;
+        max-height: 50dvh;
+        @include border-r(4px);
+
+        @include Tablet {
+            max-height: unset;
+        }
+
+        &-title {
+            color: var(--gray-darker);
+            @include spacing(margin-bottom, 16px);
+            @include t1-b;
+        }
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h4;
+    }
+
+    &__desc {
+        display: flex;
+        flex-direction: column;
+        @include gap(12px);
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: row;
+        @include gap(12px);
+
+        &-image {
+            height: vw(64px);
+            width: vw(96px);
+            flex-shrink: 0;
+            @include border-r(8px);
+
+            @include HD {
+                height: vwh(64px);
+                width: vwh(96px);
+            }
+            @include Tablet {
+                height: vwt(64px);
+                width: vwt(96px);
+            }
+            @include Mobile {
+                height: vwm(64px);
+                width: vwm(96px);
+            }
+        }
+
+        &-text {
+            display: flex;
+            flex-direction: column;
+            @include gap(4px);
+        }
+
+        &-title {
+            color: var(--gray-darker);
+            @include t2-b;
+        }
+
+        &-prices {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            @include gap(8px);
+        }
+    }
+
+    &__price {
+
+        &--request {
+            color: var(--gray-medium);
+            @include h6;
+        }
+
+        &--current {
+            color: var(--gray-darker);
+            @include h5;
+        }
+
+        &--old {
+            color: var(--color1-dark);
+            text-decoration: line-through solid currentColor;
+            @include t3;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: fit-content;
+        @include gap(8px);
+    }
+
+    .table {
+        @include spacing(gap, 4px);
+
+        & + .specs-modal__body-title {
+            @include spacing(margin-top, 12px);
+        }
+
+        &__title {
+            color: var(--gray-darker);
+            background: var(--gray-lighter);
+            @include spacing(padding, 8px);
+            @include spacing(padding-inline, 12px);
+            @include  border-r(8px);
+            @include t2-b;
+        }
+
+        &__body {
+            gap: unset;
+        }
+
+        &__row {
+            border-bottom: solid var(--gray-lighter);
+            background: transparent;
+            @include spacing(padding-inline, 12px);
+            @include spacing(gap, 12px);
+            @include border-w(2px);
+
+            &:last-child {
+                border-bottom: unset;
+            }
+        }
+
+        &__cell {
+            padding-inline: unset;
+        }
+    }
+}

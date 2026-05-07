@@ -1,0 +1,151 @@
+<?php
+/** @var array $content */
+
+use \App\Extensions\Site\Model\Product;
+use App\Extensions\Services\Model\Services;
+
+$advantageCards = self::getTableFrom('index_advantages_cards', $content);
+$offerSlides = self::getTableFrom('index_offers_cards', $content);
+$partnerSlides = self::getTableFrom('index_partners_cards', $content);
+
+$services = Services::findAdv()
+    ->where(['is_active' => 1])
+    ->andWhere(['is_on_home' => 1])
+    ->orderBy('npp')
+    ->all();
+
+usort($services, fn ($a, $b) => $b->npp <=> $a->npp);
+
+$carouselSlides = App\Extensions\Site\Model\Banner::findAdv()
+    ->where(['is_active' => 1])
+    ->orderBy('npp ASC')
+    ->all();
+
+$newModelBanners = App\Extensions\Site\Model\NewModelsBanner::findAdv()
+    ->where(['is_active' => 1])
+    ->all();
+
+$brandCards = \App\Extensions\Catalog\Model\Brand::findAdv()->where('show_on_index = 1')->orderBy('npp')->all();
+?>
+
+<?php App\Layout\Components\Common\Header\Layout::drawHeader(); ?>
+
+    <main>
+        <?php
+        App\Layout\Components\Unique\FirstscreenMain\Layout::draw([
+            'title' => $content['params']['index_fs_title'],
+            'desc' => $content['params']['index_fs_desc'],
+            'slides' => $carouselSlides,
+        ]);
+
+        $products = Product::findAdv()
+            ->leftJoin('catalog_stock', 'product_id')
+            ->where('catalog_product.is_active = 1 and catalog_stock.is_active = 1 and catalog_stock.available > 0')
+            ->limit(10)
+            ->orderBy('npp')
+            ->all();
+        if ($products) {
+            App\Layout\Components\Common\SliderSections\ProductsSlider\Layout::draw([
+                'title' => 'Техника в наличии',
+                'link' => '/catalog/?stock=1',
+                'slides' => $products
+            ]);
+        }
+
+        if ($offerSlides) {
+            App\Layout\Components\Common\SliderSections\OffersSlider\Layout::draw([
+                'title' => $content['params']['index_offers_title'],
+                'slides' => $offerSlides,
+            ]);
+        }
+
+        App\Layout\Components\Common\PromoSections\CategoriesPromo\Layout::draw([
+            'title' => 'Спецтехника под любые <br/>задачи',
+        ]);
+
+        if ($advantageCards) {
+            App\Layout\Components\Common\PromoSections\AdvantagesPromo\Layout::draw([
+                'title' => $content['params']['index_advantages_title'],
+                'cards' => $advantageCards
+            ]);
+        }
+
+        if ($newModelBanners) {
+            App\Layout\Components\Common\SliderSections\NewModelsSlider\Layout::draw([
+                'title' => 'Новые модели',
+                'link' => '/catalog/?new=1',
+                'slides' => $newModelBanners,
+            ]);
+        }
+
+        if ($newProducts = Product::find(['is_new' => true, 'is_active' => 1], 'npp', 10)) {
+            App\Layout\Components\Common\SliderSections\ProductsSlider\Layout::draw([
+                'title' => 'Новые модели',
+                'link' => '/catalog/?new=1',
+                'slides' => $newProducts
+            ]);
+        }
+
+        $offerProducts = Product::findWithVdp(
+            'v_product_discounted_price.discounted_price <> v_product_discounted_price.original_price and is_active = 1',
+            'npp',
+            '15'
+        );
+        if ($offerProducts) {
+            App\Layout\Components\Common\SliderSections\ProductsSlider\Layout::draw([
+                'title' => 'Акции и специальные <br/>предложения',
+                'link' => '/catalog/?discount=1',
+                'slides' => $offerProducts
+            ]);
+        }
+
+        if ($brandCards) {
+            App\Layout\Components\Common\PromoSections\BrandsPromo\Layout::draw([
+                'title' => $content['params']['index_brands_title'],
+                'desc' => $content['params']['index_brands_desc'],
+                'cards' => $brandCards,
+            ]);
+        }
+
+        if ($services) {
+            App\Layout\Components\Common\PromoSections\ServicesPromo\Layout::draw([
+                'title' => 'Услуги',
+                'cards' => $services,
+            ]);
+        }
+
+        App\Layout\Components\Common\PromoSections\AboutPromo\Layout::draw([
+            'title' => $content['params']['index_about_title'],
+            'desc' => $content['params']['index_about_desc'],
+            'img' => '/uf/images/source/' . $content['params']['index_about_image'],
+            'cards' => self::getTableFrom('index_about_cards', $content),
+            'quote' => $content['params']['index_about_quote'],
+            'badge' => $content['params']['index_about_badge'] ?? '',
+        ]);
+
+        if ($partnerSlides) {
+            App\Layout\Components\Common\SliderSections\PartnersSlider\Layout::draw([
+                'title' => $content['params']['index_partners_title'],
+                'link' => '/cases/',
+                'slides' => $partnerSlides,
+            ]);
+        }
+
+        App\Layout\Components\Common\SliderSections\BlogSlider\Layout::draw([
+            'title' => 'Новости и статьи',
+            'link' => '/blog/',
+        ]);
+
+        App\Layout\Components\Common\PromoSections\ContactsPromo\Layout::draw();
+
+        App\Layout\Components\Common\PromoSections\ConsultationPromo\Layout::draw([
+            'title' => $content['params']['index_form_title'],
+            'desc' => $content['params']['index_form_desc'],
+            'image' => $content['params']['index_form_image'],
+        ]);
+        ?>
+    </main>
+
+<?php App\Layout\Components\Common\Footer\Layout::draw([
+    'file' => $content['params']['working_conditions_file'],
+]); ?>

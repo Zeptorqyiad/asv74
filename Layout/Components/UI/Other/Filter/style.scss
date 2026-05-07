@@ -1,0 +1,364 @@
+.filter {
+    /*----------CORE STYLE-----------*/
+    &__title {
+        flex: 1;
+        color: var(--gray-darker);
+        text-align: left;
+        user-select: none;
+        @include h6;
+        @include transition((color));
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        @include spacing(padding-top, 4px, 4px, 0px, 0px);
+        @include spacing(padding-bottom, 4px, 4px, 0px, 0px);
+        @include gap(8px);
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover .filter__button-hide {
+                color: var(--gray-darker);
+            }
+        }
+
+        @include Tablet {
+            display: none;
+        }
+
+        &:active {
+            .filter__button-hide {
+                color: var(--gray-darker);
+            }
+
+            .filter__title {
+                color: var(--color1-dark);
+            }
+        }
+
+        &.active {
+            .filter__button-hide {
+                transform: rotateX(0);
+            }
+
+            .filter__title {
+                color: var(--color1-dark);
+            }
+        }
+
+        &_mobile {
+            display: none;
+            align-items: center;
+            @include gap(8px);
+
+            @include Tablet {
+                display: flex;
+            }
+        }
+    }
+
+    &__tags {
+        display: none;
+        flex-wrap: wrap;
+        @include spacing(gap, 8px);
+
+        @include Tablet {
+            display: flex;
+        }
+
+        &-item {
+            user-select: none;
+
+            * {
+                pointer-events: none;
+            }
+
+            .tab__icon {
+                display: none;
+            }
+
+            .tab__text {
+                white-space: normal;
+                text-align: left;
+            }
+
+            &.active .tab__icon {
+                display: flex;
+            }
+        }
+
+        &-more {
+            display: none;
+        }
+    }
+
+    &__content {
+        height: fit-content;
+        max-height: 100dvh;
+        overflow: hidden;
+        @include spacing(padding-top, 12px);
+        @include transition((max-height, padding-top), 0.4s);
+
+        &.collapsed {
+            @media (min-width: 1024px) {
+                padding-top: 0;
+                max-height: 0;
+            }
+        }
+    }
+
+    &__button-reset {
+        color: var(--gray-dark);
+        @include t3;
+        @include transition((color));
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: var(--color1-main);
+            }
+        }
+
+        &:active {
+            color: var(--color1-darker);
+        }
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__button-more {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: fit-content;
+        color: var(--color1-dark);
+        @include spacing(margin-top, 8px);
+        @include transition((color, opacity));
+        @include t3-b;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                .btn-link__text {
+                    color: var(--color1-main);
+                }
+            }
+        }
+
+        &:active {
+            .btn-link__text {
+                color: var(--color1-darker);
+            }
+        }
+
+        &.hidden {
+            opacity: 0;
+        }
+    }
+
+    &__button-hide {
+        transform: rotateX(180deg);
+        color: var(--gray-medium);
+        @include icon(24px);
+        @include transition((color, transform));
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__button-all {
+        .btn__text {
+            @include t3;
+        }
+    }
+
+    fieldset {
+        margin: 0;
+        display: flex;
+        border: none;
+    }
+
+    &__fieldset {
+        display: flex;
+        flex-wrap: wrap;
+
+        &-wrap {
+            @include Tablet {
+                display: none;
+            }
+        }
+    }
+
+    /*----------TYPES-----------*/
+    &-type {
+        &_category {
+            display: flex;
+            flex-direction: column;
+
+            .filter__content {
+                @include spacing(padding-top, 8px);
+            }
+
+            .filter__title {
+                @include spacing(padding-top, 6px);
+                @include spacing(padding-bottom, 6px);
+            }
+
+            .filter__subcategories {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .tab + .tab:not(.collapsed),
+            .tab-image + .tab-image:not(.collapsed) {
+                @include spacing(margin-top, 4px);
+            }
+
+            .tab, .tab-image {
+                width: 100%;
+                justify-content: flex-start;
+                @include transition((opacity), 0.4s);
+
+                &.collapsed {
+                    max-height: 0;
+                    opacity: 0;
+                    border: 0;
+                }
+
+                &__text {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+
+        &_switch {
+            display: flex;
+            flex-direction: column;
+            border: 0;
+
+            .toggle {
+                justify-content: space-between;
+                width: 100%;
+                border-bottom: solid var(--gray-lighter);
+                @include border-w(2px);
+                @include spacing(padding-top, 16px);
+                @include spacing(padding-bottom, 16px);
+
+                &__text {
+                    @include h6;
+                    color: var(--gray-darker);
+                }
+            }
+
+            fieldset {
+                flex-direction: column;
+            }
+        }
+
+        &_range {
+            display: flex;
+            flex-direction: column;
+            @include spacing(padding-top, 12px);
+
+            .filter__top {
+                @include Tablet {
+                    margin-bottom: vwt(12px);
+                }
+                @include Mobile {
+                    margin-bottom: vwm(12px);
+                }
+            }
+        }
+
+        &_field-select {
+            display: grid;
+            grid-template-rows: min-content min-content min-content;
+            height: auto;
+            @include spacing(padding-top, 12px);
+
+            &.active {
+                grid-template-rows: min-content 1fr min-content;
+            }
+
+            fieldset {
+                flex-direction: column;
+
+                &.visible {
+                    height: auto;
+                }
+
+                @include HD {
+                    margin-bottom: vwh(8px);
+                }
+                @include Tablet {
+                    margin-bottom: vwt(8px);
+                }
+                @include Mobile {
+                    margin-bottom: vwm(8px);
+                }
+
+                @include transition((height));
+            }
+
+            .checkbox,
+            .radio-option {
+                width: 100%;
+                @include spacing(padding-top, 4px);
+                @include spacing(padding-bottom, 4px);
+            }
+        }
+
+        &_tag-list {
+            display: flex;
+            flex-direction: column;
+
+            @include Tablet {
+                padding: vwt(12px) 0;
+                gap: vwt(12px);
+            }
+            @include Mobile {
+                padding: vwm(12px) 0;
+                gap: vwm(12px);
+            }
+
+            .filter__top {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            fieldset {
+                flex-wrap: wrap;
+                gap: vw(8px);
+
+                @include HD {
+                    gap: vwh(8px);
+                }
+                @include Tablet {
+                    gap: vwt(8px);
+                }
+                @include Mobile {
+                    gap: vwm(8px);
+                }
+            }
+        }
+    }
+
+    /*----------JS style contols-----------*/
+    .js--item-more {
+        @include transition((opacity), 0.4s);
+
+        &.collapsed {
+            opacity: 0;
+            max-height: 0;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            transition: unset;
+        }
+    }
+}

@@ -1,0 +1,222 @@
+.service-about {
+    @include mq(padding-block, 80px, 80px, 40px, 40px);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        @include mq(gap, 60px, 60px, 32px, 32px);
+    }
+
+    &__body {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @include mq(gap, 20px, 20px, 16px, 16px);
+
+        @include Mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__steps {
+        display: flex;
+        flex-direction: column;
+        @include mq(gap, 20px, 20px, 16px, 16px);
+    }
+
+    &__step {
+        display: flex;
+        flex-direction: column;
+        background: var(--gray-lighter);
+        overflow: hidden;
+        @include mq(padding-block, 24px, 24px, 20px, 20px);
+        @include mq(padding-inline, 20px);
+        @include mq(gap, 20px, 20px, 12px, 12px);
+        @include border-r(16px);
+
+        &-title {
+            color: var(--color1-main);
+            @include h5;
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+            @include mq(gap, 12px, 12px, 8px, 8px);
+        }
+
+        &-item {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            @include gap(8px);
+
+            &-icon {
+                flex-shrink: 0;
+                color: var(--gray-darker);
+                @include icon(24px);
+            }
+
+            &-text {
+                color: var(--gray-dark);
+                @include t2;
+            }
+        }
+    }
+
+    &__image-container {
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        height: vw(420px);
+        @include gap(16px);
+        @include mq(top, 124px, 124px, 70px, 0);
+
+        @include HD {
+            height: vwh(376px);
+        }
+        @include Tablet {
+            height: fit-content;
+        }
+
+    }
+
+    &__image {
+        height: 100%;
+        width: 100%;
+        @include border-r(16px);
+
+        @include Tablet {
+            height: vwt(216px);
+        }
+        @include Mobile {
+            height: vwm(216px);
+        }
+    }
+
+    &__manager {
+        position: absolute;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content min-content;
+        min-width: vw(308px);
+        background: var(--gray-white);
+        bottom: vw(12px);
+        right: vw(12px);
+        @include border-r(12px);
+        @include mq(padding, 12px);
+        @include gap(12px);
+
+        @include HD {
+            min-width: vwh(308px);
+            bottom: vwh(12px);
+            right: vwh(12px);
+        }
+        @include Tablet {
+            background: var(--gray-lighter);
+            position: static;
+            min-width: vwt(304px);
+            bottom: unset;
+            right: unset;
+        }
+        @include Mobile {
+            min-width: vwm(304px);
+        }
+
+        &-credentials {
+            display: grid;
+            grid-template-columns: min-content auto;
+            grid-template-rows: min-content min-content;
+            grid-template-areas:
+            'image text'
+            'image links';
+            background: var(--gray-white);
+            height: fit-content;
+            padding: vw(8px);
+            gap: vw(4px) vw(12px);
+            border-bottom: solid var(--gray-lighter);
+            @include border-w(2px);
+
+            @include HD {
+                padding: vwh(8px);
+                gap: vwh(4px) vwh(12px);
+            }
+            @include Tablet {
+                background: var(--gray-lighter);
+                padding: vwt(8px);
+                gap: vwt(8px);
+            }
+            @include Mobile {
+                padding: vwm(8px);
+                gap: vwm(8px);
+            }
+        }
+
+        &-image-wrap {
+            grid-area: image;
+            border-right: solid var(--gray-lighter);
+            @include icon(64px);
+            @include border-w(2px);
+            @include mq(padding-right, 8px);
+        }
+
+        &-avatar {
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            @include border-r(4px);
+        }
+
+        &-text {
+            grid-area: text;
+            display: flex;
+            flex-direction: column;
+            @include gap(8px);
+        }
+
+        &-name {
+            color: var(--gray-darker);
+            @include h6;
+        }
+
+        &-job {
+            color: var(--gray-medium);
+            @include t4;
+        }
+
+        &-links {
+            grid-area: links;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            @include gap(4px);
+        }
+
+        &-phone, &-email {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-darker);
+            white-space: nowrap;
+            @include t3-b;
+            @include transition((color, background));
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    color: var(--color1-main);
+                }
+            }
+
+            &:active {
+                color: var(--color1-dark);
+
+                @include Tablet {
+                    background: var(--color1-lighter);
+                }
+            }
+        }
+
+        &__controls {
+
+        }
+    }
+}

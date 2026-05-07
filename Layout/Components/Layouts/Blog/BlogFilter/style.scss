@@ -1,0 +1,34 @@
+.blog-filter {
+    padding-block-start: vw(12px);
+    padding-block-end: vw(20px);
+
+    @include HD {
+        padding-block-start: vwh(12px);
+        padding-block-end: vwh(20px);
+    }
+    @include Tablet {
+        padding-block: vwt(16px);
+    }
+    @include Mobile {
+        padding-block: vwm(16px);
+    }
+
+    &__container {
+        display: flex;
+        overflow: hidden;
+    }
+
+    &__tabs {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        @include gap(8px);
+        @include hide-scrollbar;
+
+        @include Tablet {
+            flex-wrap: nowrap;
+            overflow: scroll hidden;
+        }
+    }
+}

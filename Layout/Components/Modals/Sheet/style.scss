@@ -1,0 +1,164 @@
+.sheet {
+    position: absolute;
+    top: vw(72px);
+    left: 0;
+    right: 0;
+    background: var(--gray-white);
+    height: 70dvh;
+    width: 100%;
+    z-index: -1;
+    transform: translateY(-130%) translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    contain: layout paint;
+    pointer-events: none;
+    user-select: none;
+    @include transition((opacity, transform), 0.6s);
+
+    @include HD {
+        top: vwh(64px);
+    }
+    @include Tablet {
+        display: none;
+        top: vwt(64px);
+    }
+    @include Mobile {
+        top: vwm(64px);
+    }
+
+    &.active {
+        transform: translateY(-1%) translateZ(0);
+        pointer-events: auto;
+        user-select: auto;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr vw(240px);
+        height: 100%;
+        padding: vw(20px) 0 vw(40px);
+        @include gap(20px);
+
+        @include HD {
+            grid-template-columns: 1fr vwh(232px);
+            padding: vwh(20px) 0 vwh(40px);
+        }
+        @include Tablet {
+            grid-template-columns: 1fr vw(240px);
+            padding: vwh(20px) 0 vwh(40px);
+        }
+        @include Mobile {
+            grid-template-columns: 1fr vw(240px);
+            padding: vwm(20px) 0 vwm(40px);
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        @include gap(24px);
+    }
+
+    &__aside {
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        border-left: solid var(--gray-light);
+        padding-left: vw(20px);
+        @include border-w(2px);
+        @include gap(20px);
+        @include hide-scrollbar;
+
+        @include HD {
+            padding-left: vwh(20px);
+        }
+        @include Tablet {
+            padding-left: vwt(20px);
+        }
+        @include Mobile {
+            padding-left: vwm(20px);
+        }
+    }
+
+    &__nav {
+        height: fit-content;
+    }
+
+    &__categories {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden scroll;
+        @include gap(40px);
+        @include hide-scrollbar;
+    }
+
+    &__cat-wrap {
+        display: flex;
+        flex-direction: column;
+        @include gap(20px);
+        @include mq(margin-top, 40px);
+    }
+
+    &__cat-title {
+        color: var(--gray-darker);
+        @include h6;
+    }
+
+    &__cat-list {
+        display: none;
+        grid-template-columns: repeat(6, 1fr);
+        overflow: hidden;
+        gap: vw(20px);
+        animation: pulse-sm 0.5s ease forwards;
+
+        @include HD {
+            gap: vwh(20px);
+        }
+        @include Tablet {
+            gap: vwt(20px);
+        }
+        @include Mobile {
+            gap: vwm(20px);
+        }
+
+        &.active {
+            display: grid;
+        }
+    }
+
+    &__cat-empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
+            color: var(--gray-medium);
+            @include t1-b;
+            @include mq(margin-block, 36px);
+        }
+    }
+}
+
+.sheet-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    will-change: transform, opacity;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    z-index: 99;
+    @include transition((opacity), 0.4s);
+
+    @include Tablet {
+        display: none;
+    }
+
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+        user-select: auto;
+    }
+}

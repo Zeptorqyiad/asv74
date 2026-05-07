@@ -1,0 +1,80 @@
+.staff-card {
+    display: flex;
+    flex-direction: column;
+
+    &__image {
+        position: relative;
+        width: 100%;
+        height: vw(220px);
+        @include border-r(12px);
+
+        @include HD {
+            height: vwh(220px);
+        }
+        @include Tablet {
+            height: vwt(220px);
+        }
+        @include Mobile {
+            height: vwm(220px);
+        }
+    }
+
+    &__name {
+        color: var(--gray-darker);
+        margin-top: vw(12px);
+        @include h5;
+
+        @include HD {
+            margin-top: vwh(12px);
+        }
+        @include Tablet {
+            margin-top: vwt(20px);
+        }
+        @include Mobile {
+            margin-top: vwm(20px);
+        }
+    }
+
+    &__job {
+        color: var(--gray-medium);
+        margin-top: vw(4px);
+        @include t3;
+
+        @include HD {
+            margin-top: vwh(4px);
+        }
+        @include Tablet {
+            margin-top: vwt(4px);
+        }
+        @include Mobile {
+            margin-top: vwm(4px);
+        }
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        border-top: solid var(--gray-lighter);
+        margin-top: vw(8px);
+        padding-top: vw(8px);
+        @include gap(8px);
+        @include border-w(2px);
+
+        @include HD {
+            margin-top: vwh(8px);
+            padding-top: vwh(8px);
+        }
+        @include Tablet {
+            margin-top: vwt(8px);
+            padding-top: vwt(8px);
+        }
+        @include Mobile {
+            margin-top: vwm(8px);
+            padding-top: vwm(8px);
+        }
+    }
+
+    &__link {
+
+    }
+}

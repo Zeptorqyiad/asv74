@@ -1,0 +1,77 @@
+.logo-button {
+    position: relative;
+    display: flex;
+    width: vw(160px);
+    height: vw(40px);
+    overflow: hidden;
+    touch-action: manipulation;
+    @include border-r(8px);
+
+    @include HD {
+        width: vwh(160px);
+        height: vwh(40px);
+    }
+    @include Tablet {
+        width: vwt(160px);
+        height: vwt(40px);
+    }
+    @include Mobile {
+        width: vwm(160px);
+        height: vwm(40px);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .logo-button__icon {
+                top: -100%;
+            }
+
+            .logo-button__tab {
+                top: 0;
+            }
+        }
+
+        &:active {
+            .logo-button__icon {
+                top: -100%;
+            }
+
+            .logo-button__tab {
+                top: 0;
+            }
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 0;
+        width: vw(160px);
+        height: vw(40px);
+        flex-shrink: 0;
+        @include transition((top));
+
+        @include HD {
+            width: vwh(160px);
+            height: vwh(40px);
+        }
+        @include Tablet {
+            width: vwt(160px);
+            height: vwt(40px);
+        }
+        @include Mobile {
+            width: vwm(160px);
+            height: vwm(40px);
+        }
+    }
+
+    &__tab {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        @include transition((top, background, color));
+
+        .tab__text {
+            @include t3;
+        }
+    }
+}

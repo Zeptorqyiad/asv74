@@ -1,0 +1,69 @@
+.search-card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    background: var(--gray-white);
+    width: 100%;
+    @include mq(padding, 4px);
+    @include border-r(12px);
+    @include gap(12px);
+    @include transition((background));
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .search-card__title {
+                color: var(--color1-main);
+            }
+        }
+    }
+
+    &:active {
+        background: var(--gray-lighter);
+
+        .search-card__title {
+            color: var(--color1-dark);
+        }
+    }
+
+    &.is-focused {
+        outline: solid var(--color1-main);
+    }
+
+    &__link {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        inset: 0;
+        z-index: 2;
+    }
+
+    &__image {
+        overflow: hidden;
+        background: var(--gray-lighter);
+        flex-shrink: 0;
+        @include mq(width, 72px);
+        @include mq(height, 48px);
+        @include border-r(8px);
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include t2-b;
+        @include truncate(2);
+        @include transition((color));
+    }
+
+    &__desc {
+        color: var(--gray-medium);
+        @include t3;
+        @include truncate(2);
+        font-weight: 600;
+    }
+}

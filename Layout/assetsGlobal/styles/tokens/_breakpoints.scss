@@ -1,0 +1,113 @@
+/*----------BREAKPOINTS-----------*/
+$breakpoints: (
+    'hd': 1401px,
+    'tablet': 811px,
+    'mobile': 481px,
+);
+
+@mixin HD {
+    @media screen and (width <= map-get($breakpoints, 'hd')) {
+        @content;
+    }
+}
+
+@mixin Tablet {
+    @media screen and (width <= map-get($breakpoints, 'tablet')) {
+        @content;
+    }
+}
+
+@mixin Mobile {
+    @media screen and (width <= map-get($breakpoints, 'mobile')) {
+        @content;
+    }
+}
+
+@mixin mq($property, $desktop, $hd: null, $tablet: null, $mobile: null) {
+    @if not $property or (type-of($property) != 'string' and type-of($property) != 'keyword') {
+        @error "mq(): `$property` must be a valid CSS property name.";
+    }
+    @if not $desktop {
+        @error "mq(): desktop value is required for `#{$property}`.";
+    }
+
+    // Compute fallbacks once
+    $hd-val: if($hd != null, $hd, $desktop);
+    $tablet-val: if($tablet != null, $tablet, $hd-val);
+    $mobile-val: if($mobile != null, $mobile, $tablet-val);
+
+    // Pre-compute processed values
+    $desktop-processed: _process-value($desktop, vw);
+    $hd-processed: _process-value($hd-val, vwh);
+    $tablet-processed: _process-value($tablet-val, vwt);
+    $mobile-processed: _process-value($mobile-val, vwm);
+
+    // Apply values only once per breakpoint
+    #{$property}: $desktop-processed;
+
+    @include HD {
+        #{$property}: $hd-processed;
+    }
+
+    @include Tablet {
+        #{$property}: $tablet-processed;
+    }
+
+    @include Mobile {
+        #{$property}: $mobile-processed;
+    }
+}
+
+// Consolidated processing function - caches list length check
+@function _process-value($val, $vw-fn) {
+    @if type-of($val) != 'list' and type-of($val) != 'string' {
+        @return _convert-single-value($val, $vw-fn);
+    }
+
+    // Handle space-separated values in strings or lists
+    $result: ();
+    $values: if(type-of($val) == 'list', $val, _quick-split($val));
+
+    @each $part in $values {
+        $result: append($result, _convert-single-value($part, $vw-fn), space);
+    }
+
+    @return $result;
+}
+
+// Process a single value with minimal operations
+@function _convert-single-value($val, $vw-fn) {
+    @if type-of($val) == 'number' and unit($val) == 'px' {
+        @return call($vw-fn, $val);
+    }
+    @return $val;
+}
+
+// Faster string split - only for space delimiter
+@function _quick-split($str) {
+    @if type-of($str) != 'string' {
+        @return $str;
+    }
+
+    $result: ();
+    $buffer: '';
+
+    @for $i from 1 through str-length($str) {
+        $char: str-slice($str, $i, $i);
+
+        @if $char == ' ' {
+            @if $buffer != '' {
+                $result: append($result, $buffer);
+                $buffer: '';
+            }
+        } @else {
+            $buffer: $buffer + $char;
+        }
+    }
+
+    @if $buffer != '' {
+        $result: append($result, $buffer);
+    }
+
+    @return $result;
+}

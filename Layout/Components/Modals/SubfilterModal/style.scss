@@ -1,0 +1,80 @@
+.subfilter-modal {
+    @media (min-width: 1025px) {
+        position: static;
+        transform: unset;
+        display: block;
+        width: auto;
+        border: unset;
+        padding: unset;
+        margin: unset;
+        opacity: 1;
+        box-shadow: unset;
+
+        .filter-modal {
+            &__top,
+            &__search,
+            &__actions {
+                display: none;
+            }
+
+            &__body {
+                display: block;
+                margin: unset;
+                border: unset;
+                overflow: unset;
+            }
+        }
+    }
+
+    @include Tablet {
+        .js--item-more.collapsed {
+            position: absolute;
+        }
+
+        .filter-modal__top {
+            height: auto;
+            border-bottom: solid var(--gray-lighter);
+            @include spacing(padding-bottom, 8px);
+            @include spacing(margin-bottom, 12px);
+            @include border-w(2px);
+        }
+
+        .filter-modal__body {
+            margin-top: unset;
+            border: unset;
+        }
+
+        .filter__button-more {
+            display: none;
+        }
+
+        .filter__fieldset {
+            @include spacing(gap, 4px);
+
+            & > label {
+                justify-content: space-between;
+                flex-direction: row-reverse;
+                border-top: solid var(--gray-lighter);
+                @include border-w(2px);
+                @include spacing(padding-top, 8px);
+                @include spacing(padding-bottom, 8px);
+
+                .checkbox__text {
+                    @include spacing(padding-top, 2px);
+                    @include spacing(padding-bottom, 2px);
+                    @include t3;
+                }
+            }
+        }
+    }
+
+    &__empty {
+        .subfilter-modal__empty-text {
+            display: block;
+        }
+    }
+
+    &__empty-text {
+        display: none;
+    }
+}

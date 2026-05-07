@@ -1,0 +1,44 @@
+.work-card {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    background: var(--gray-lighter);
+    overflow: hidden;
+    @include mq(min-height, 280px, 250px, 192px, 280px);
+    @include border-r(12px);
+
+    &__image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        user-select: none;
+    }
+
+    &__text {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+        @include gap(8px);
+        @include mq(padding-block, 20px, 20px, 16px, 16px);
+        @include mq(padding-inline, 20px, 20px, 12px, 12px);
+    }
+
+    &__title {
+        color: var(--gray-darker);
+        @include h5;
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        @include t2;
+
+        @include Tablet {
+            @include t3
+        }
+    }
+}

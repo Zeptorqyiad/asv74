@@ -1,0 +1,281 @@
+.comparison {
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    &__top {
+        display: flex;
+        flex-direction: column;
+        border-top: solid var(--gray-lighter);
+        padding-block-start: vw(12px);
+        padding-block-end: vw(20px);
+        overflow: hidden;
+        background: var(--gray-white);
+        border-bottom: solid var(--gray-lighter);
+        @include gap(20px);
+        @include border-w(2px);
+
+        @include HD {
+            padding-block-start: vwh(12px);
+            padding-block-end: vwh(20px);
+        }
+        @include Tablet {
+            padding-block-start: 0;
+            padding-block-end: vwt(20px);
+            border-top: none;
+        }
+        @include Mobile {
+            padding-block-end: vwm(20px);
+        }
+    }
+
+    &__tab-list {
+        display: flex;
+        flex-direction: row;
+        @include gap(20px);
+
+        @include Tablet {
+            flex-wrap: nowrap;
+            overflow: scroll;
+            @include hide-scrollbar;
+        }
+    }
+
+    &__tab {
+        .tab__badge {
+            color: var(--gray-dark) !important;
+            background: var(--gray-lighter) !important;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @include gap(20px);
+
+        @include Tablet {
+            flex-wrap: nowrap;
+            overflow: scroll;
+            @include hide-scrollbar;
+        }
+    }
+
+    &__controls {
+        display: flex;
+        flex-direction: row;
+        @include gap(12px);
+
+        @include Tablet {
+            flex-shrink: 0;
+        }
+    }
+
+    &__button {
+
+        &-add {
+
+        }
+
+        &-clear {
+
+        }
+    }
+
+    &__buttons-navigation {
+        display: flex;
+        flex-direction: row;
+        @include gap(12px);
+
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__products-slider {
+        overflow: hidden;
+        @include border-r(8px);
+    }
+
+    &__body {
+        padding-block-end: vw(40px);
+
+        @include HD {
+            padding-block-end: vwh(40px);
+        }
+        @include Tablet {
+            padding-block-end: vwt(40px);
+        }
+        @include Mobile {
+            padding-block-end: vwm(40px);
+        }
+    }
+
+    &__group {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content 1fr;
+        margin-top: vw(20px);
+        @include transition((grid-template-rows), 0.3s);
+        @include border-r(2px);
+
+        @include HD {
+            margin-top: vwh(20px);
+        }
+        @include Tablet {
+            margin-top: vwt(20px);
+        }
+        @include Mobile {
+            margin-top: vwm(20px);
+        }
+
+        &.collapsed {
+            grid-template-rows: min-content 0fr;
+
+            .comparison__group-top svg {
+                transform: rotateX(180deg);
+            }
+
+            .comparison__group-body {
+                opacity: 0;
+            }
+        }
+
+        &-top {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            padding: vw(12px) vw(16px);
+            width: 100%;
+            background: var(--gray-lighter);
+            color: var(--gray-black);
+            border: solid transparent;
+            @include gap(8px);
+            @include border-r(8px);
+            @include border-w(1px);
+            @include transition((background, color, border-color));
+
+            @include HD {
+                padding: vwh(12px) vwh(16px);
+            }
+            @include Tablet {
+                padding: vwt(12px) vwt(16px);
+            }
+            @include Mobile {
+                padding: vwm(12px) vwm(16px);
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    color: var(--color1-main);
+                    border-color: var(--gray-light);
+                }
+            }
+
+            &:active {
+                color: var(--color1-main);
+                background: var(--gray-light);
+                border-color: var(--gray-light);
+            }
+
+            h3 {
+                @include t2-b;
+            }
+
+            svg {
+                flex-shrink: 0;
+                @include icon(24px);
+                @include transition((transform));
+            }
+        }
+
+        &-body {
+            overflow: hidden;
+            opacity: 1;
+            @include transition((opacity), 0.4s);
+        }
+
+        &-slider {
+            overflow: hidden;
+            margin-top: vw(12px);
+
+            @include HD {
+                margin-top: vwh(12px);
+            }
+            @include Tablet {
+                margin-top: vwt(12px);
+            }
+            @include Mobile {
+                margin-top: vwm(12px);
+            }
+        }
+    }
+
+    &__table {
+        display: flex;
+        flex-direction: column;
+        @include gap(8px);
+
+        &-title {
+            margin-block: vw(12px);
+            margin-left: vw(12px);
+            color: var(--color1-dark);
+            @include t2-b;
+
+            @include HD {
+                margin-block: vwh(12px);
+                margin-left: vwh(12px);
+            }
+            @include Tablet {
+                margin-block: vwt(12px);
+                margin-left: vwt(12px);
+            }
+            @include Mobile {
+                margin-block: vwm(12px);
+                margin-left: vwm(12px);
+            }
+        }
+
+        &-row {
+            display: flex;
+            flex-direction: column;
+            padding: vw(8px) vw(12px);
+            background: var(--gray-lighter);
+            @include gap(8px);
+            @include border-r(8px);
+
+            @include HD {
+                padding: vwh(8px) vwh(12px);
+            }
+            @include Tablet {
+                padding: vwt(8px) vwt(12px);
+            }
+            @include Mobile {
+                padding: vwm(8px) vwm(12px);
+            }
+
+            &:nth-of-type(even) {
+                background: transparent;
+            }
+
+            &-title {
+                color: var(--gray-darker);
+                @include t2-b;
+            }
+
+            &-content {
+                display: flex;
+                flex-direction: row;
+            }
+
+            &-text {
+                color: var(--gray-dark);
+                @include t3;
+            }
+        }
+    }
+}

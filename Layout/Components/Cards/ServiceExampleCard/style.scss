@@ -1,0 +1,73 @@
+.service-example-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background: var(--bg-light);
+    @include border-r(28px, 28px, 20px, 20px);
+    @include mq(gap, 40px, 40px, 20px, 20px);
+    @include mq(padding, 40px, 40px, 28px, 20px);
+
+    @include Tablet {
+        grid-template-columns: 1fr;
+    }
+
+    &__image {
+        overflow: hidden;
+        @include mq(height, 420px, 374px, 432px, 196px);
+        @include border-r(20px, 20px, 12px, 12px);
+
+        img {
+            height: 100%;
+            width: 100%;
+            user-select: none;
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        @include gap(16px);
+    }
+
+    &__title {
+        color: var(--gray-black);
+        @include t1-b;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        background: var(--gray-white);
+        @include mq(padding, 20px, 20px, 12px, 12px);
+        @include border-r(12px);
+        @include gap(12px);
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @include gap(12px);
+
+        &:not(:first-of-type) {
+            border-top: solid var(--gray-lighter);
+            @include mq(padding-top, 12px);
+        }
+
+        &-marker {
+            flex-shrink: 0;
+            background: var(--color1-light) !important;
+        }
+
+        &-text {
+            color: var(--gray-darker);
+            @include t2;
+        }
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        border-top: solid var(--gray-light);
+        @include t3;
+        @include mq(padding-top, 12px)
+    }
+}

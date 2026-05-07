@@ -1,0 +1,252 @@
+.comparison-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 100%;
+    @include gap(16px);
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .comparison-card__title {
+                color: var(--color1-main);
+            }
+
+            .comparison-card__image-container img {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &:active {
+        .comparison-card__title {
+            color: var(--color1-darker);
+        }
+
+        .comparison-card__image-container img {
+            transform: scale(1);
+        }
+    }
+
+    &--no-image {
+        .comparison-card__media {
+            display: none;
+        }
+    }
+
+    &__link {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+
+    &__media {
+        position: relative;
+        overflow: hidden;
+        height: vw(250px);
+        transform-origin: top;
+        will-change: height;
+        @include border-r(12px);
+        @include transition((height));
+
+        @include HD {
+            height: vwh(220px);
+        }
+        @include Tablet {
+            height: vwt(128px);
+        }
+        @include Mobile {
+            height: vwm(128px);
+        }
+    }
+
+    &__media-wrapper {
+        position: relative;
+        display: grid;
+        grid-template-columns: auto min-content;
+        grid-template-areas:
+            'badges compare'
+            'spec spec';
+        height: 100%;
+        width: 100%;
+        padding: vw(12px);
+
+        @include HD {
+            padding: vwh(12px);
+        }
+        @include Tablet {
+            padding: vwt(8px);
+        }
+        @include Mobile {
+            padding: vwm(8px);
+        }
+    }
+
+    &__button-compare {
+        position: relative;
+        grid-area: compare;
+        justify-self: self-end;
+        z-index: 2;
+    }
+
+    &__image-container {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        img {
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            @include transition((transform));
+        }
+    }
+
+    &__pagination {
+        position: absolute;
+        bottom: vw(-8px);
+
+        @include HD {
+            bottom: vwh(-8px);
+        }
+        @include Tablet {
+            bottom: vwt(-8px);
+        }
+        @include Mobile {
+            bottom: vwm(-8px);
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: vw(20px);
+
+        @include HD {
+            gap: vwh(12px);
+        }
+        @include Tablet {
+            gap: vwt(12px);
+        }
+        @include Mobile {
+            gap: vwm(12px);
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        color: var(--gray-dark);
+        height: 2lh;
+        margin-top: vw(4px);
+        @include h5;
+        @include truncate(2);
+        @include transition((color));
+
+        @include HD {
+            margin-top: vwh(4px);
+        }
+        @include Tablet {
+            margin-top: vwt(4px);
+        }
+        @include Mobile {
+            margin-top: vwm(4px);
+        }
+    }
+
+    &__prices {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: vw(16px);
+        @include gap(8px);
+
+        @include HD {
+            margin-top: vwh(12px);
+        }
+        @include Tablet {
+            margin-top: vwt(8px);
+        }
+        @include Mobile {
+            margin-top: vwm(8px);
+        }
+    }
+
+    &__price {
+
+        &--request {
+            color: var(--color1-light);
+            @include h6;
+
+            @include Tablet {
+                @include t3-b;
+            }
+        }
+
+        &--current {
+            color: var(--gray-darker);
+            @include h6;
+
+            @include Tablet {
+                @include t3-b;
+            }
+        }
+
+        &--old {
+            color: var(--color1-dark);
+            text-decoration: line-through solid currentColor;
+            @include t3;
+
+            @include Tablet {
+                @include t4;
+            }
+        }
+    }
+
+    &__actions {
+        display: grid;
+        grid-template-columns: repeat(2, min-content);
+        height: fit-content;
+        z-index: 2;
+        @include gap(12px);
+
+        @include HD {
+
+        }
+        @include Tablet {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        @include Mobile {
+
+        }
+    }
+
+    &__button-order {
+
+        .btn__text {
+            white-space: nowrap;
+        }
+
+        @include Tablet {
+            width: 100% !important;
+        }
+        @include Mobile {
+
+        }
+    }
+
+    &__button-about {
+        width: 100% !important;
+
+        @include Tablet {
+            display: none;
+        }
+    }
+}

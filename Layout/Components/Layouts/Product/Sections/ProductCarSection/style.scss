@@ -1,0 +1,311 @@
+.product-car-section {
+    display: flex;
+    flex-direction: column;
+    padding: vw(24px) 0 0;
+    gap: vw(20px);
+
+    @include HD {
+        padding: vwh(24px) 0 0;
+        gap: vwh(20px);
+    }
+    @include Tablet {
+        padding: vwt(24px) 0 0;
+        gap: vwt(24px);
+    }
+    @include Mobile {
+        padding: vwm(24px) 0 0;
+        gap: vwm(24px);
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        border-bottom: solid var(--gray-lighter);
+        padding-bottom: vw(32px);
+        @include gap(28px);
+        @include border-w(2px);
+
+        @include HD {
+            padding-bottom: vwh(32px);
+        }
+        @include Tablet {
+            padding-bottom: vwt(20px);
+        }
+        @include Mobile {
+            padding-bottom: vwm(20px);
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        @include gap(4px);
+
+        span {
+            color: var(--gray-darker);
+            @include t2-b;
+        }
+
+        p {
+            color: var(--gray-dark);
+            @include t2;
+        }
+    }
+
+    &__title {
+        color: var(--color1-dark);
+        @include h4;
+    }
+
+    &__desc-image {
+        width: 100%;
+        height: vw(480px);
+        cursor: pointer;
+        object-fit: contain;
+        @include border-r(20px);
+
+        @include HD {
+            height: vwh(440px);
+        }
+        @include Tablet {
+            height: vwt(438px);
+        }
+        @include Mobile {
+            height: vwm(206px);
+        }
+    }
+
+    &__table-wrap, &__plan-wrap {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: vw(20px);
+
+        @include HD {
+            gap: vwh(20px);
+        }
+        @include Tablet {
+            gap: vwt(32px);
+        }
+        @include Mobile {
+            grid-template-columns: 1fr;
+            gap: vwm(16px);
+        }
+    }
+
+    &__table {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        @include gap(20px);
+    }
+
+    &__table-image {
+        position: sticky;
+        top: 0;
+        flex-shrink: 0;
+        overflow: hidden;
+        width: vw(420px);
+        height: vw(240px);
+        padding: vw(20px);
+        background: var(--gray-white);
+        border: solid var(--gray-light);
+        cursor: pointer;
+        @include border-r(20px);
+        @include border-w(2px);
+
+        @include HD {
+            width: vwh(420px);
+            height: vwh(240px);
+            padding: vwh(20px);
+        }
+        @include Tablet {
+            width: vwt(336px);
+            height: vwt(192px);
+            padding: vwt(12px);
+        }
+        @include Mobile {
+            width: 100%;
+            height: vwm(186px);
+            padding: vwm(12px);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                img {
+                    scale: 1.1;
+                }
+            }
+        }
+
+        &:active {
+            img {
+                scale: 1;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            scale: 1;
+            @include border-r(20px);
+            @include transition((scale));
+        }
+    }
+
+    &__plan-wrap {
+
+    }
+
+    &__plan {
+        display: flex;
+        flex-direction: column;
+        color: var(--gray-dark);
+        @include t2;
+
+        p span {
+            white-space: wrap !important;
+        }
+    }
+
+    &__plan-image-wrap {
+        display: flex;
+        flex-direction: column;
+        @include gap(12px);
+
+        span:not([class]) {
+            text-align: center;
+            color: var(--gray-medium);
+            @include t4;
+        }
+    }
+
+    &__plan-image {
+        height: vw(280px);
+        border: solid var(--gray-light);
+        flex-shrink: 0;
+        align-items: center;
+        width: vw(420px);
+        background: var(--gray-white);
+        padding: vw(20px);
+        cursor: pointer;
+        @include gap(12px);
+        @include border-r(20px);
+        @include border-w(2px);
+
+        @include HD {
+            height: vwh(280px);
+            width: vwh(420px);
+            padding: vwh(20px);
+        }
+        @include Tablet {
+            height: vwt(244px);
+            width: vwt(336px);
+            padding: vwt(12px);
+        }
+        @include Mobile {
+            height: vwm(218px);
+            width: 100%;
+            padding: vwm(12px);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                img {
+                    scale: 1.1;
+                }
+            }
+        }
+
+        &:active {
+            img {
+                scale: 1;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            scale: 1;
+            @include border-r(20px);
+            @include transition((scale));
+        }
+    }
+
+    &__equip-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        gap: vw(20px);
+
+        @include HD {
+            gap: vwh(12px);
+        }
+        @include Tablet {
+            grid-template-columns: repeat(2, 1fr);
+            gap: vwt(12px);
+        }
+        @include Mobile {
+            grid-template-columns: repeat(1, 1fr);
+            gap: vwm(12px);
+        }
+    }
+
+    &__equip-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: vw(12px);
+        background: var(--gray-lighter);
+        @include gap(16px);
+        @include border-r(12px);
+
+        @include HD {
+            padding: vwh(12px);
+        }
+        @include Tablet {
+            padding: vwt(12px);
+        }
+        @include Mobile {
+            padding: vwm(12px);
+        }
+
+        img {
+            flex-shrink: 0;
+            @include icon(60px);
+            @include border-r(4px);
+        }
+
+        p {
+            color: var(--gray-darker);
+            @include t3;
+        }
+    }
+
+    &__video-wrap {
+        display: flex;
+        flex-direction: column;
+        @include gap(12px);
+    }
+
+    &__player {
+        height: vw(550px) !important;
+        width: 100% !important;
+        @include border-r(12px);
+
+        @include HD {
+            height: vwh(498px) !important;
+        }
+        @include Tablet {
+            height: vwt(400px) !important;
+        }
+        @include Mobile {
+            height: vwm(184px) !important;
+        }
+    }
+
+    &__video-subtitle {
+        color: var(--gray-medium);
+        @include t4;
+    }
+}

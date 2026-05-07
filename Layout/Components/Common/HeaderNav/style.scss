@@ -1,0 +1,61 @@
+.header-nav {
+    display: inline-flex;
+    width: 100%;
+    background: var(--gray-darker);
+    padding-block: vw(4px);
+
+    @include HD {
+        padding-block: vwh(4px);
+    }
+    @include Tablet {
+        padding-block: vwt(4px);
+    }
+    @include Mobile {
+        padding-block: vwm(4px);
+    }
+
+    &__container {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        @include gap(12px)
+    }
+
+    &__wrap {
+        display: inline-flex;
+        align-items: center;
+        @include gap(28px);
+    }
+
+    &__button-geo {
+
+    }
+
+    &__nav-list {
+        display: inline-flex;
+        @include gap(12px);
+    }
+
+    &__link {
+
+    }
+
+    &__dropdown {
+
+    }
+
+    &__contacts {
+        height: 100%;
+        display: inline-flex;
+        @include gap(12px);
+    }
+
+    &__separator {
+        align-self: stretch;
+    }
+
+    &__button-contact {
+
+    }
+}

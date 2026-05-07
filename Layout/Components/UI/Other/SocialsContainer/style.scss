@@ -1,0 +1,6 @@
+.socials-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @include gap(8px);
+}

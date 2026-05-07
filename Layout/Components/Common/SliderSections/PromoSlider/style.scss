@@ -1,0 +1,123 @@
+.promo-slider {
+    position: relative;
+    @include spacing(margin-block, 20px);
+    overflow: hidden;
+    z-index: 9;
+
+    @include Tablet {
+        display: flex;
+        flex-direction: column;
+        @include spacing(gap, 8px);
+    }
+
+    &__buttons {
+        position: absolute;
+        @include spacing(bottom, 24px);
+        @include spacing(padding-inline, 24px);
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include spacing(gap, 12px);
+        z-index: 10;
+        width: 100%;
+
+        @include Tablet {
+            position: initial;
+            width: 100%;
+            justify-self: start;
+            padding-inline: 0;
+            gap: 0;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        @include spacing(gap, 12px);
+
+        button {
+            display: inline-flex !important;
+        }
+
+        @include Tablet {
+            @include spacing(gap, 8px);
+        }
+    }
+
+    &__button-link {
+        @include Tablet {
+            background: var(--gray-lighter);
+            color: var(--gray-darker);
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--color1-lighter);
+                    color: var(--gray-darker);
+                }
+            }
+
+            &:active {
+                background: var(--color1-light) !important;
+                color: var(--gray-darker) !important;
+            }
+        }
+    }
+
+    &__slider-wrap {
+        overflow: hidden;
+        height: fit-content;
+    }
+
+    &__slider {
+        overflow: hidden;
+        @include spacing(border-radius, 28px);
+    }
+
+    &__image {
+        min-width: 100%;
+        @include spacing(border-radius, 28px);
+        overflow: hidden;
+        @include spacing(height, 140px);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            @include spacing(border-radius, 28px);
+        }
+
+        @include Tablet {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
+        }
+
+        &--mob {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            @include Tablet {
+                opacity: 1;
+                @include spacing(height, 140px);
+                overflow: visible;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__button-prev,
+    &__button-next {
+        @include Tablet {
+            display: none;
+        }
+    }
+}

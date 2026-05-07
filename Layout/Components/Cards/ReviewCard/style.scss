@@ -1,0 +1,90 @@
+.review-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    @include gap(8px);
+
+    &[data-type="photo_v"],
+    &[data-type="document"],
+    &[data-type="video"] {
+        grid-column: span 1;
+    }
+
+    &[data-type="photo_h"] {
+        grid-column: span 2;
+
+        @include Tablet {
+            grid-column: span 1;
+        }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .review-card__photo {
+                scale: 1.1;
+            }
+        }
+    }
+
+    &:active {
+        .review-card__photo {
+            scale: 1;
+        }
+
+        .review-card__media {
+            border-color: var(--color1-main);
+        }
+
+        .review-card__title {
+            color: var(--color1-main);
+        }
+    }
+
+    &__badge {
+        position: absolute;
+        z-index: 2;
+        @include mq(top, 12px);
+        @include mq(left, 12px);
+    }
+
+    &__media {
+        overflow: hidden;
+        border: solid var(--gray-lighter);
+        z-index: 1;
+        @include border-w(2px);
+        @include border-r(12px);
+        @include mq(height, 480px, 430px, 510px, 498px);
+        @include transition((border-color));
+    }
+
+    &__photo {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        user-select: none;
+        @include transition((scale));
+
+        &--horizontal {
+
+        }
+
+        &--vertical {
+
+        }
+    }
+
+    &__video {
+        &.video-player {
+            height: 100% !important;
+        }
+    }
+
+    &__title {
+        margin-inline: auto;
+        text-align: center;
+        color: var(--gray-darker);
+        @include h6;
+        @include truncate(2);
+        @include transition((color));
+    }
+}

@@ -1,0 +1,72 @@
+.tab-list {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: var(--gray-lighter);
+    padding: vw(12px);
+    @include border-r(12px);
+    @include gap(8px);
+
+    @include HD {
+        padding: vwh(12px);
+    }
+    @include Tablet {
+        padding: vwt(12px);
+    }
+    @include Mobile {
+        flex-direction: column;
+        padding: vwm(12px);
+    }
+
+    &__tab {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: vw(56px);
+        width: 100%;
+        background: transparent;
+        color: var(--gray-medium);
+        touch-action: manipulation;
+        @include gap(8px);
+        @include border-r(8px);
+        @include transition((background, color));
+
+        @include HD {
+            height: vwh(56px);
+        }
+        @include Tablet {
+            height: vwt(56px);
+        }
+        @include Mobile {
+            height: vwm(48px);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                color: var(--color1-main);
+            }
+        }
+
+        &:active {
+            background: var(--gray-white);
+            color: var(--gray-darker);
+        }
+
+        &.active {
+            pointer-events: none;
+            background: var(--gray-white);
+            color: var(--gray-darker);
+        }
+
+        svg {
+            flex-shrink: 0;
+            @include icon(24px);
+        }
+
+        span {
+            white-space: nowrap;
+            @include t2-b;
+        }
+    }
+}

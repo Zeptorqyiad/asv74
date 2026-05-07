@@ -1,0 +1,156 @@
+.add-service-card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    overflow: hidden;
+    background: var(--gray-lighter);
+    gap: vw(28px);
+    padding: vw(12px);
+    cursor: pointer;
+    @include border-r(20px, 20px, 12px, 12px);
+    @include transition((background));
+
+    @include HD {
+        gap: vwh(24px);
+        padding: vwh(12px);
+    }
+    @include Tablet {
+        flex-direction: column;
+        gap: vwt(16px);
+        padding: vwt(16px) vwt(12px);
+    }
+    @include Mobile {
+        gap: vwm(16px);
+        padding: vwm(16px) vwm(12px);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            .add-service-card__left img {
+                transform: scale(1.1);
+            }
+
+            .add-service-card__title {
+                color: var(--color1-dark);
+            }
+        }
+    }
+
+    &:active {
+        background: var(--gray-light);
+
+        .add-service-card__left img {
+            transform: scale(1);
+        }
+
+        .add-service-card__title {
+            color: var(--color1-darker);
+        }
+    }
+
+
+    &__link {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        z-index: 2;
+    }
+
+    &__left {
+        flex-shrink: 0;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        width: vw(240px);
+        height: vw(180px);
+        @include border-r(12px, 12px, 8px, 8px);
+
+        @include HD {
+            width: vwh(240px);
+            height: vwh(180px);
+        }
+        @include Tablet {
+            width: 100%;
+            height: vwt(204px);
+        }
+        @include Mobile {
+            height: vwm(198px);
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            user-select: none;
+            @include transition((transform));
+        }
+    }
+
+    &__button {
+        display: none;
+        position: absolute;
+        bottom: vw(8px);
+        left: vw(8px);
+        z-index: 2;
+
+        @include HD {
+            bottom: vwh(8px);
+            left: vwh(8px);
+        }
+        @include Tablet {
+            display: inline-flex;
+            bottom: vwt(8px);
+            left: vwt(8px);
+        }
+        @include Mobile {
+            bottom: vwm(8px);
+            left: vwm(8px);
+        }
+    }
+
+    &__right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        @include gap(12px)
+    }
+
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        @include gap(8px);
+    }
+
+    &__title {
+        color: var(--gray-black);
+        @include h5;
+        @include transition((color));
+    }
+
+    &__desc {
+        color: var(--gray-dark);
+        @include t3;
+        @include truncate(3);
+    }
+
+    &__badges {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        @include gap(4px);
+    }
+
+    &__badge {
+
+    }
+
+    &__button-more {
+        position: relative;
+        z-index: 2;
+
+        @include Tablet {
+            display: none;
+        }
+    }
+}

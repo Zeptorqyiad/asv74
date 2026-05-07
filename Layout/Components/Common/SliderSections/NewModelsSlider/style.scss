@@ -1,0 +1,165 @@
+.new-models-slider {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+    "title buttons"
+    "slider slider";
+    gap: vw(40px);
+    overflow: hidden;
+
+    @include HD {
+        gap: vwh(40px);
+    }
+    @include Tablet {
+        gap: vwt(32px);
+        grid-template-columns: 1fr;
+        grid-template-areas:
+    'title'
+    'slider'
+    'buttons';
+    }
+    @include Mobile {
+        gap: vwm(32px);
+    }
+
+    &__title {
+        grid-area: title;
+    }
+
+    &__buttons {
+        display: flex;
+        gap: vw(12px);
+        justify-self: end;
+        align-items: center;
+        grid-area: buttons;
+
+        @include HD {
+            gap: vwh(12px);
+        }
+        @include Tablet {
+            width: 100%;
+            justify-self: start;
+            gap: 0;
+        }
+    }
+
+    &__button-link {
+        @include Tablet {
+            width: 100%;
+
+            background: var(--gray-lighter);
+            color: var(--gray-darker);
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--color1-lighter);
+                    color: var(--gray-darker);
+                }
+            }
+
+            &:active {
+                background: var(--color1-light) !important;
+                color: var(--gray-darker) !important;
+            }
+        }
+    }
+
+    &__slider-wrap {
+        grid-area: slider;
+        overflow: hidden;
+        height: fit-content;
+        border-radius: vw(28px);
+
+        @include HD {
+            border-radius: vwh(28px);
+        }
+        @include Tablet {
+            border-radius: vwt(20px);
+        }
+        @include Mobile {
+            border-radius: vwm(20px);
+        }
+    }
+
+    &__slider {
+        overflow: hidden;
+        @include border-r(28px, 28px, 20px, 20px);
+    }
+
+    &__button-prev,
+    &__button-next {
+        @include Tablet {
+            display: none;
+        }
+    }
+
+    &__pagination {
+        display: flex;
+        margin-top: vw(12px);
+        height: fit-content !important;
+        width: fit-content !important;
+        margin-inline: auto;
+        overflow: hidden;
+
+        @include HD {
+            margin-top: vwh(12px);
+        }
+        @include Tablet {
+            margin-top: vwt(12px);
+        }
+        @include Mobile {
+            margin-top: vwm(12px);
+        }
+
+        .swiper-pagination-bullet {
+            height: vw(8px);
+            width: vw(20px);
+            padding: vw(4px);
+            background: var(--gray-light) !important;
+            transition: width 1s var(--ease-spring), background 0.4s var(--cubic-bezier);
+            opacity: 1 !important;
+            @include border-r(8px);
+
+            @include HD {
+                height: vwh(8px);
+                width: vwh(20px);
+                padding: vwh(4px);
+            }
+            @include Tablet {
+                height: vwt(4px);
+                width: vwt(8px);
+                padding: vwt(2px);
+                margin: 0 vwt(2px) !important;
+            }
+            @include Mobile {
+                height: vwm(4px);
+                width: vwm(8px);
+                padding: vwm(2px);
+                margin: 0 vwm(2px) !important;
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    background: var(--gray-medium) !important;
+                }
+            }
+
+            &-active {
+                width: vw(40px);
+                background: var(--gray-medium) !important;
+
+                @include HD {
+                    width: vwh(40px);
+                }
+                @include Tablet {
+                    width: vwt(16px);
+                }
+                @include Mobile {
+                    width: vwm(16px);
+                }
+            }
+        }
+    }
+}

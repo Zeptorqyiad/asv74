@@ -1,0 +1,31 @@
+.btn-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: transparent solid;
+    width: fit-content;
+    background: var(--gray-lighter);
+    color: var(--gray-darker);
+    touch-action: manipulation;
+    @include transition((border, background, color, opacity));
+    @include border-w(2px);
+    @include gap(8px);
+    @include border-r(8px);
+    @include icon(48px);
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background: var(--color1-lighter);
+        }
+    }
+
+    &:active {
+        background: var(--color1-light);
+    }
+
+    &__icon {
+        color: var(--gray-darker);
+        @include icon(24px);
+    }
+}

@@ -1,0 +1,118 @@
+:root {
+    /*----------FONT FAMILY SETTINGS-----------*/
+    --font-family-heading: 'Commissioner', Montserrat, Inter, Helvetica, sans-serif;
+    --font-family-body: 'Commissioner', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    /*----------ROOT STYLES-----------*/
+    font-family: var(--font-family-body);
+    color-scheme: light;
+    accent-color: var(--color1-main);
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    --cubic-bezier: cubic-bezier(0.14, 0.18, 0.16, 1.02);
+    --ease-spring: linear(
+            0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%,
+            0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121,
+            1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%,
+            1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991,
+            0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%,
+            1.003 76.9%, 1.004 83.8%, 1
+    );
+}
+
+body {
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    text-wrap: balance;
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+:target {
+    scroll-margin-top: vw(122px);
+
+    @include HD {
+        scroll-margin-top: vwh(114px);
+    }
+    @include Tablet {
+        scroll-margin-top: vwt(66px);
+    }
+    @include Mobile {
+        scroll-margin-top: vwm(66px);
+    }
+}
+
+*::selection {
+    background: var(--color1-lighter);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    z-index: z('overlay');
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: layout paint;
+    @include transition((opacity), 0.5s);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -250%) translateZ(0);
+    background: var(--gray-white);
+    z-index: z('modal');
+    display: none;
+    opacity: 0;
+    box-shadow: var(--shadow-far);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    overscroll-behavior: contain;
+    @include transition((transform, opacity), 0.5s);
+
+    @include Tablet {
+        transform: translate(0, 100%) translateZ(0);
+        inset: 0;
+    }
+}
+
+.modal.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateZ(0);
+
+    @include Tablet {
+        transform: translate(0) translateZ(0);
+    }
+}
+
+//icon for img fullpage
+.img-expand {
+    position: relative;
+
+    &__btn {
+        position: absolute;
+        border: none !important;
+        pointer-events: none;
+        @include spacing(bottom, 12px);
+        @include spacing(right, 12px);
+    }
+}

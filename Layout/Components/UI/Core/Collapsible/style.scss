@@ -1,0 +1,55 @@
+.collapsible {
+    width: 100%;
+    display: grid;
+    grid-template-rows: min-content 0fr;
+    overflow: hidden;
+    @include transition((grid-template-rows));
+
+    &.active {
+        grid-template-rows: min-content 1fr;
+
+        .tab-image__icon-right {
+            transform: rotateX(180deg);
+        }
+    }
+
+    &__trigger {
+        width: 100% !important;
+
+        .tab-image__text-wrap {
+            margin-right: auto;
+        }
+
+        &.active {
+            cursor: pointer !important;
+            background: var(--gray-lighter) !important;
+            color: var(--color1-main) !important;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        @include gap(8px);
+    }
+
+    &__option {
+
+        &:first-of-type {
+            @include mq(margin-top, 8px)
+        }
+    }
+
+    &__link {
+        width: 100% !important;
+
+        .tab-image__text-wrap {
+            margin-right: auto;
+        }
+    }
+
+    &__show-all {
+        width: 100% !important;
+    }
+}

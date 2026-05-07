@@ -1,0 +1,108 @@
+.brand-card {
+    position: relative;
+    height: vw(60px);
+    width: fit-content;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background: var(--gray-white);
+    color: var(--gray-darker);
+    padding: 0 vw(24px);
+    @include gap(8px);
+    @include border-r(8px);
+    @include transition((color, background));
+
+    @include HD {
+        padding: 0 vwh(24px);
+        height: vwh(60px);
+    }
+    @include Tablet {
+        padding: 0 vwt(20px);
+        height: vwt(48px);
+    }
+    @include Mobile {
+        padding: 0 vwm(20px);
+        height: vwm(48px);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background: var(--gray-light);
+            color: var(--color1-main);
+
+            .brand-card__icon {
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    &:active {
+        background: var(--gray-light);
+        color: var(--color1-darker);
+
+        .brand-card__icon {
+            transform: rotate(45deg);
+        }
+    }
+
+
+    &__image {
+        flex-shrink: 0;
+        object-fit: contain;
+        height: vw(24px);
+        user-select: none;
+
+        @include HD {
+            height: vwh(24px);
+        }
+        @include Tablet {
+            height: vwt(24px);
+        }
+        @include Mobile {
+            height: vwm(24px);
+        }
+    }
+
+    &__name {
+        white-space: nowrap;
+        @include h4;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        @include icon(24px);
+        @include transition((transform), 0.3s, var(--ease-spring));
+    }
+
+    &__badge {
+        right: 0;
+        bottom: -10%;
+        height: vw(18px);
+        padding-inline: vw(10px);
+        position: absolute;
+        color: var(--gray-white);
+        background: var(--color1-main);
+        transform: rotate(-5deg);
+        max-width: 21ch;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        z-index: 2;
+        user-select: none;
+        @include border-r(120px);
+        @include t5-b;
+
+        @include HD {
+            height: vwh(18px);
+            padding-inline: vwh(10px);
+        }
+        @include Tablet {
+            height: vwt(18px);
+            padding-inline: vwt(10px);
+        }
+        @include Mobile {
+            height: vwm(18px);
+            padding-inline: vwm(10px);
+        }
+    }
+
+}

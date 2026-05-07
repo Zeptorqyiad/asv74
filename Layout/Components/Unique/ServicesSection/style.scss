@@ -1,0 +1,22 @@
+.services-section {
+    @include mq(padding-block-start, 20px);
+    @include mq(padding-block-end, 120px, 120px, 80px, 80px);
+
+    &__container {
+        display: grid;
+        grid-auto-flow: dense row;
+        grid-template-columns: repeat(2, 1fr);
+        gap: vw(40px) vw(20px);
+        @include mq(gap, 20px, 20px, 16px, 16px);
+
+        @include HD {
+
+        }
+        @include Tablet {
+
+        }
+        @include Mobile {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.reviews-section {
+    padding-block-start: vw(20px);
+    padding-block-end: vw(40px);
+
+    @include HD {
+        padding-block-start: vwh(20px);
+        padding-block-end: vwh(40px);
+    }
+    @include Tablet {
+        padding-block-start: vwt(16px);
+        padding-block-end: vwt(32px);
+    }
+    @include Mobile {
+        padding-block-start: vwm(16px);
+        padding-block-end: vwm(32px);
+    }
+
+    &__container {
+        display: grid;
+        grid-auto-flow: dense row;
+        grid-template-columns: repeat(4, 1fr);
+        gap: vw(40px) vw(20px);
+
+        @include HD {
+            gap: vwh(40px) vwh(20px);
+        }
+        @include Tablet {
+            grid-template-columns: repeat(2, 1fr);
+            gap: vwt(32px) vwt(20px);
+        }
+        @include Mobile {
+            grid-template-columns: repeat(1, 1fr);
+            gap: vwm(32px) vwm(20px);
+        }
+    }
+
+    &__card {
+
+    }
+}

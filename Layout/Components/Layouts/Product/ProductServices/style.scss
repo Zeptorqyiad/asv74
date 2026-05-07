@@ -1,0 +1,47 @@
+.product-services {
+    display: flex;
+
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: vw(60px);
+        padding-block: vw(80px);
+
+        @include HD {
+            gap: vwh(60px);
+            padding-block: vwh(80px);
+        }
+        @include Tablet {
+            gap: vwt(32px);
+            padding-block: vwt(32px);
+        }
+        @include Mobile {
+            gap: vwm(32px);
+            padding-block: vwm(32px);
+        }
+    }
+
+    &__title {
+        color: var(--gray-black);
+        @include h2;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: min-content;
+        gap: vw(20px);
+
+        @include HD {
+            gap: vwh(20px);
+        }
+        @include Tablet {
+            gap: vwt(16px);
+        }
+        @include Mobile {
+            grid-template-columns: 1fr;
+            gap: vwm(16px);
+        }
+    }
+}
